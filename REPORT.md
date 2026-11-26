@@ -14,7 +14,7 @@ We fitted an Ornstein-Uhlenbeck (OU) model to 14 spreads and traded each one wit
 
 1. **Only three spreads made money in both periods and stayed profitable at 10 bps: Brent–WTI (1:1 and hedged) and the 3-2-1 crack spread.** All three are physically linked energy spreads with economic reasons to mean-revert. OOS Sharpe is 1.07 for hedged Brent–WTI, 0.98 for 1:1 Brent–WTI and 0.63 for the crack spread. The result is fragile:
    - 56–74% of each pair's OOS P&L comes from a single year (2022, or 2026 for the hedged pair).
-   - The futures series are not adjusted for contract rolls.
+   - The futures series are not adjusted for contract rolls, and the different roll dates of Brent and WTI may create some of the apparent mean reversion (§6.1).
 2. **Passing a cointegration test in-sample did not predict profit.** Of the 7 spreads that passed, 4 lost money in-sample at the base cost (KO/PEP, V/MA, AUD/NZD, USD/CAD vs crude), and hedged Brent–WTI only broke even (Sharpe 0.02). AUD/NZD had the strongest test result (EG p = 0.009) and lost money in both periods.
 3. **Several cointegration relationships broke down OOS.** KO/PEP, AUD/NZD and the crack spread no longer pass ADF on OOS data (p = 0.47, 0.16, 0.08), and their OOS half-lives roughly doubled. HD/LOW, which failed the test in-sample, went from IS Sharpe +0.35 to OOS −0.42.
 4. **Trades are held for less than one half-life.** The median holding period is 0.70× the estimated half-life in-sample and 0.65× OOS. The exit at |z| < 0.5 on a 60-day rolling z-score closes trades well before the spread has moved halfway back to its mean.
@@ -31,7 +31,7 @@ We fitted an Ornstein-Uhlenbeck (OU) model to 14 spreads and traded each one wit
 | Signal | Rolling 60-day z-score. Entry \|z\| > 2, exit \|z\| < 0.5, stop \|z\| > 4. After a stop, no re-entry until \|z\| < 0.5. No new entries while the trailing 252-day OU fit is not mean-reverting (refit every 21 days). |
 | Execution | Signal at close t, filled at close t+1. Shares are fixed at entry. Dollar-neutral sizing: $0.50 long and $0.50 short per $1 of notional. |
 | Costs | 5 bps per leg on traded notional at entry and exit (base); sensitivity at 0, 5 and 10 bps. |
-| Quality gate | 111 pytest tests, including OU parameter recovery (OLS and MLE), look-ahead and shift tests, costs strictly lowering returns, and output schema validation. |
+| Quality gate | 112 pytest tests, including OU parameter recovery (OLS and MLE), look-ahead and shift tests, costs strictly lowering returns, and output schema validation. |
 
 Returns are measured on a fixed $1 notional and do not compound. Sharpe ratios are annualised with 252 trading days.
 
@@ -125,7 +125,17 @@ OLS and exact MLE give the same half-lives to three decimals. For a Gaussian AR(
 
 ## 6. Known limitations
 
-1. **Futures roll gaps.** The yfinance `=F` series splice the front contract and are **not back-adjusted**. Price jumps at the roll stay in both the spread and the P&L. A 5σ jump rule flags them; it doesn't correct them. ROLL_SECTION_PLACEHOLDER See `ou_model/assets/commodities/DATA_NOTES.md`.
+1. **Futures roll gaps.** The yfinance `=F` series splice the front contract and are **not back-adjusted**. Price jumps at the roll stay in both the spread and the P&L. A 5σ jump rule flags them; it doesn't correct them. In the evaluation window it flags 9 distinct dates for the Brent–WTI pairs, 29 for the crack spread (19 of them on RB, many at the March and September changes to and from summer-grade gasoline) and 9 for gold/silver. P&L on the flagged dates:
+
+   | Pair | IS P&L total / on flagged days | OOS P&L total / on flagged days |
+   |---|---|---|
+   | brent_wti | +0.170 / +0.047 | +0.165 / 0.000 |
+   | brent_wti_hedged | +0.010 / −0.009 | +0.204 / 0.000 |
+   | crack_321 | +0.136 / −0.002 | +0.216 / **−0.069** |
+   | gold_silver_ratio | −0.111 / −0.072 | −0.028 / **+0.237** |
+   | gold_silver_hedged | −0.133 / −0.051 | −0.075 / 0.000 |
+
+   The *large* flagged jumps don't explain the energy results: Brent–WTI earned nothing OOS on them, and the crack spread lost money on them. The flagged gold/silver days in 2025–26 look like real silver moves rather than rolls. **The bigger risk is the roll jumps too small to flag.** Brent and WTI front months expire on different calendars. When one leg rolls before the other, the spread shifts by that leg's contango or backwardation, then shifts back when the other leg rolls. This roughly monthly sawtooth *looks like* fast mean reversion. Brent–WTI's very short OOS half-life (6–7 days) and ~10-day holding period are consistent with the strategy partly trading this artefact. Treat the Brent–WTI and crack results as unproven until they are re-run on back-adjusted or constant-maturity series. See `ou_model/assets/commodities/DATA_NOTES.md`.
 2. **Survivorship and hindsight bias.** The equity pairs (KO/PEP, XOM/CVX, HD/LOW, V/MA, XLF/KBE) are well-known pairs of today's large caps, chosen with hindsight. A selection made in 2015 could have included pairs that later diverged or were delisted. Our equity results would likely *overstate* what a real selection would achieve, and even so they are poor.
 3. **Structural breaks.**
    - The SNB removed the EUR/CHF 1.20 floor on 2015-01-15. This is flagged, and an `eurchf_post_snb` variant starts its estimation in February 2015. Yahoo stamps the −18.9% move on **2015-01-16**, one day late.
@@ -157,7 +167,7 @@ OLS and exact MLE give the same half-lives to three decimals. For a Gaussian AR(
 
 ## 8. How to reproduce
 
-The commands below rebuild the environment, run all 111 tests, re-download the data and regenerate all 14 result folders, then launch the dashboard.
+The commands below rebuild the environment, run all 112 tests, re-download the data and regenerate all 14 result folders, then launch the dashboard.
 
 ```bash
 make install
