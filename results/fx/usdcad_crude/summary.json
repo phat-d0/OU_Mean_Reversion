@@ -1,0 +1,587 @@
+{
+  "asset_class": "fx",
+  "pair": "usdcad_crude",
+  "legs": [
+    "CAD=X",
+    "CL=F"
+  ],
+  "construction": "hedged_spread",
+  "transform": "log",
+  "data": {
+    "start": "2015-01-01",
+    "end": "2026-11-26",
+    "n_obs": 3102,
+    "flags": {
+      "roll_gaps": [],
+      "structural_breaks": [],
+      "non_positive_prices": [
+        {
+          "date": "2020-04-20",
+          "leg": "CL=F",
+          "price": -37.630001068115234
+        }
+      ],
+      "notes": [
+        "alignment: raw rows {'CAD=X': 3359, 'CL=F': 3246}",
+        "alignment: NaN price rows dropped {'CAD=X': 0, 'CL=F': 0}",
+        "alignment: weekend rows dropped {'CAD=X': 0, 'CL=F': 0}",
+        "alignment: rows forward-filled (holiday mismatch) {'CAD=X': 4, 'CL=F': 116}",
+        "alignment: union of dates 3363, rows dropped by inner join 1, final rows 3362",
+        "non-positive price masked to NaN: CL=F -37.630001068115234 on 2020-04-20",
+        "large one-day move (|log r| > 0.1): CL=F -0.1079 on 2014-11-28",
+        "large one-day move (|log r| > 0.1): CL=F +0.1064 on 2016-01-21",
+        "large one-day move (|log r| > 0.1): CL=F +0.1162 on 2016-02-12",
+        "large one-day move (|log r| > 0.1): CL=F +0.1369 on 2019-09-16",
+        "large one-day move (|log r| > 0.1): CL=F -0.1061 on 2020-03-06",
+        "large one-day move (|log r| > 0.1): CL=F -0.2822 on 2020-03-09",
+        "large one-day move (|log r| > 0.1): CL=F -0.1004 on 2020-03-16",
+        "large one-day move (|log r| > 0.1): CL=F -0.2799 on 2020-03-18 (reverses next day: possible bad tick)",
+        "large one-day move (|log r| > 0.1): CL=F +0.2136 on 2020-03-19 (reverses next day: possible bad tick)",
+        "large one-day move (|log r| > 0.1): CL=F -0.1172 on 2020-03-20",
+        "large one-day move (|log r| > 0.1): CL=F +0.2205 on 2020-04-02",
+        "large one-day move (|log r| > 0.1): CL=F +0.1127 on 2020-04-03 (reverses next day: possible bad tick)",
+        "large one-day move (|log r| > 0.1): CL=F -0.1083 on 2020-04-14",
+        "large one-day move (|log r| > 0.1): CL=F +0.3196 on 2020-04-22",
+        "large one-day move (|log r| > 0.1): CL=F +0.1801 on 2020-04-23",
+        "large one-day move (|log r| > 0.1): CL=F -0.2818 on 2020-04-27",
+        "large one-day move (|log r| > 0.1): CL=F +0.1992 on 2020-04-29",
+        "large one-day move (|log r| > 0.1): CL=F +0.2239 on 2020-04-30",
+        "large one-day move (|log r| > 0.1): CL=F +0.1861 on 2020-05-05",
+        "large one-day move (|log r| > 0.1): CL=F -0.1400 on 2021-11-26",
+        "large one-day move (|log r| > 0.1): CL=F -0.1293 on 2022-03-09",
+        "large one-day move (|log r| > 0.1): CL=F +0.1152 on 2026-03-06",
+        "large one-day move (|log r| > 0.1): CL=F -0.1272 on 2026-03-10",
+        "large one-day move (|log r| > 0.1): CL=F -0.1094 on 2026-03-23",
+        "large one-day move (|log r| > 0.1): CL=F +0.1080 on 2026-04-02",
+        "large one-day move (|log r| > 0.1): CL=F -0.1793 on 2026-04-08",
+        "large one-day move (|log r| > 0.1): CL=F -0.1216 on 2026-04-17 (reverses next day: possible bad tick)"
+      ],
+      "bad_ticks": [
+        {
+          "date": "2014-11-28",
+          "leg": "CL=F",
+          "log_return": -0.107942,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2016-01-21",
+          "leg": "CL=F",
+          "log_return": 0.106377,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2016-02-12",
+          "leg": "CL=F",
+          "log_return": 0.116213,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2019-09-16",
+          "leg": "CL=F",
+          "log_return": 0.136944,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2020-03-06",
+          "leg": "CL=F",
+          "log_return": -0.106087,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2020-03-09",
+          "leg": "CL=F",
+          "log_return": -0.282206,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2020-03-16",
+          "leg": "CL=F",
+          "log_return": -0.100365,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2020-03-18",
+          "leg": "CL=F",
+          "log_return": -0.27992,
+          "reverses_next_day": true
+        },
+        {
+          "date": "2020-03-19",
+          "leg": "CL=F",
+          "log_return": 0.213574,
+          "reverses_next_day": true
+        },
+        {
+          "date": "2020-03-20",
+          "leg": "CL=F",
+          "log_return": -0.117238,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2020-04-02",
+          "leg": "CL=F",
+          "log_return": 0.220481,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2020-04-03",
+          "leg": "CL=F",
+          "log_return": 0.11268,
+          "reverses_next_day": true
+        },
+        {
+          "date": "2020-04-14",
+          "leg": "CL=F",
+          "log_return": -0.10829,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2020-04-22",
+          "leg": "CL=F",
+          "log_return": 0.319634,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2020-04-23",
+          "leg": "CL=F",
+          "log_return": 0.180142,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2020-04-27",
+          "leg": "CL=F",
+          "log_return": -0.281796,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2020-04-29",
+          "leg": "CL=F",
+          "log_return": 0.199196,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2020-04-30",
+          "leg": "CL=F",
+          "log_return": 0.22394,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2020-05-05",
+          "leg": "CL=F",
+          "log_return": 0.186075,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2021-11-26",
+          "leg": "CL=F",
+          "log_return": -0.139985,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2022-03-09",
+          "leg": "CL=F",
+          "log_return": -0.129267,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2026-03-06",
+          "leg": "CL=F",
+          "log_return": 0.115187,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2026-03-10",
+          "leg": "CL=F",
+          "log_return": -0.127205,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2026-03-23",
+          "leg": "CL=F",
+          "log_return": -0.109414,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2026-04-02",
+          "leg": "CL=F",
+          "log_return": 0.108014,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2026-04-08",
+          "leg": "CL=F",
+          "log_return": -0.179298,
+          "reverses_next_day": false
+        },
+        {
+          "date": "2026-04-17",
+          "leg": "CL=F",
+          "log_return": -0.121579,
+          "reverses_next_day": true
+        }
+      ],
+      "alignment": {
+        "raw_rows": {
+          "CAD=X": 3359,
+          "CL=F": 3246
+        },
+        "nan_dropped": {
+          "CAD=X": 0,
+          "CL=F": 0
+        },
+        "weekend_dropped": {
+          "CAD=X": 0,
+          "CL=F": 0
+        },
+        "ffilled": {
+          "CAD=X": 4,
+          "CL=F": 116
+        },
+        "union_rows": 3363,
+        "join_dropped": 1,
+        "final_rows": 3362
+      }
+    }
+  },
+  "split": {
+    "in_sample": [
+      "2015-01-01",
+      "2021-12-31"
+    ],
+    "out_of_sample": [
+      "2022-01-01",
+      "2026-11-26"
+    ]
+  },
+  "hedge_ratio_in_sample": -0.08401487976043853,
+  "ou_params": {
+    "in_sample": {
+      "ols": {
+        "kappa": 8.234349835390939,
+        "mu": 0.0038996087945284423,
+        "sigma": 0.09334857970206382,
+        "half_life": 0.08417752395955097,
+        "b": 0.967852101185565,
+        "r2": 0.9365783239042256,
+        "n_obs": 1826,
+        "mean_reverting": true,
+        "method": "ols",
+        "unit_root_pvalue": 2.658520845194942e-06
+      },
+      "mle": {
+        "kappa": 8.234349222665802,
+        "mu": 0.0038996136859619406,
+        "sigma": 0.09329741515259998,
+        "half_life": 0.08417753022327423,
+        "b": 0.967852103538848,
+        "r2": 0.9365783239042256,
+        "n_obs": 1826,
+        "mean_reverting": true,
+        "method": "mle",
+        "unit_root_pvalue": 2.658520845194942e-06
+      }
+    },
+    "out_of_sample_diagnostic": {
+      "ols": {
+        "kappa": 6.255716772625827,
+        "mu": 0.00787034872989986,
+        "sigma": 0.06534359908607106,
+        "half_life": 0.1108021999322386,
+        "b": 0.9754813154633808,
+        "r2": 0.9511390486101148,
+        "n_obs": 1275,
+        "mean_reverting": true,
+        "method": "ols",
+        "unit_root_pvalue": 0.0016644595660339858
+      }
+    }
+  },
+  "tests": {
+    "in_sample": {
+      "adf": {
+        "name": "adf",
+        "statistic": -4.002518454478408,
+        "pvalue": 0.0013973811478836472,
+        "critical_values": {
+          "1%": -3.4339481027788024,
+          "5%": -2.8631293617920544,
+          "10%": -2.5676161227508754
+        },
+        "n_obs": 1820,
+        "extra": {
+          "used_lag": 5,
+          "regression": "c"
+        }
+      },
+      "engle_granger": {
+        "name": "engle_granger",
+        "statistic": -4.290946554368907,
+        "pvalue": 0.0026448908476232004,
+        "critical_values": {
+          "1%": -3.902451107374742,
+          "5%": -3.3394800485644582,
+          "10%": -3.0467747618690186
+        },
+        "n_obs": 1826,
+        "extra": {
+          "hedge_ratio": -0.08401487976043853,
+          "alpha": 0.5953168092891319,
+          "trend": "c"
+        }
+      },
+      "johansen": {
+        "trace_stats": [
+          29.977174711167745,
+          7.247733315954596
+        ],
+        "trace_crit_95": [
+          15.4943,
+          3.8415
+        ],
+        "max_eig_stats": [
+          22.72944139521315,
+          7.247733315954596
+        ],
+        "max_eig_crit_95": [
+          14.2639,
+          3.8415
+        ],
+        "rank": 2,
+        "weights": [
+          1.0,
+          0.08546550123785165
+        ],
+        "legs": [
+          "CAD=X",
+          "CL=F"
+        ],
+        "n_obs": 1826
+      }
+    },
+    "out_of_sample_diagnostic": {
+      "adf": {
+        "name": "adf",
+        "statistic": -3.82165953864738,
+        "pvalue": 0.0026933233147298547,
+        "critical_values": {
+          "1%": -3.435509501237317,
+          "5%": -2.86381847140403,
+          "10%": -2.5679830801661603
+        },
+        "n_obs": 1270,
+        "extra": {
+          "used_lag": 4,
+          "regression": "c"
+        }
+      }
+    }
+  },
+  "verdict": {
+    "cointegrated_in_sample": true,
+    "mean_reverting_in_sample": true
+  },
+  "metrics": {
+    "in_sample": {
+      "ann_return": -0.020212294912262743,
+      "ann_vol": 0.08941508091673667,
+      "sharpe": -0.22605017749840695,
+      "max_drawdown": -0.2929522920531812,
+      "hit_rate": 0.6410256410256411,
+      "n_trades": 39,
+      "avg_holding_days": 17.41025641025641,
+      "half_life_days": 21.212736037806845,
+      "holding_to_half_life": 0.8207454417585083,
+      "total_return": -0.1465391381139049,
+      "total_gross_return": -0.10808483488630535,
+      "total_cost": 0.03845430322759948,
+      "n_obs": 1827
+    },
+    "out_of_sample": {
+      "ann_return": 0.029975209741519664,
+      "ann_vol": 0.08570772798552403,
+      "sharpe": 0.3497375376300076,
+      "max_drawdown": -0.09938759142563294,
+      "hit_rate": 0.68,
+      "n_trades": 25,
+      "avg_holding_days": 19.52,
+      "half_life_days": 21.212736037806845,
+      "holding_to_half_life": 0.9202018997082728,
+      "total_return": 0.15166028738268877,
+      "total_gross_return": 0.17714562880229617,
+      "total_cost": 0.025485341419607378,
+      "n_obs": 1275
+    }
+  },
+  "cost_sensitivity": {
+    "0.0": {
+      "in_sample": {
+        "ann_return": -0.014908253087766256,
+        "ann_vol": 0.08937866345270468,
+        "sharpe": -0.1667987919248206,
+        "max_drawdown": -0.28550822439245127,
+        "hit_rate": 0.6666666666666666,
+        "n_trades": 39,
+        "avg_holding_days": 17.41025641025641,
+        "half_life_days": 21.212736037806845,
+        "holding_to_half_life": 0.8207454417585083,
+        "total_return": -0.10808483488630535,
+        "total_gross_return": -0.10808483488630535,
+        "total_cost": 0.0,
+        "n_obs": 1827
+      },
+      "out_of_sample": {
+        "ann_return": 0.03501231251621854,
+        "ann_vol": 0.08565707313068417,
+        "sharpe": 0.4087498117382718,
+        "max_drawdown": -0.09690011699180918,
+        "hit_rate": 0.68,
+        "n_trades": 25,
+        "avg_holding_days": 19.52,
+        "half_life_days": 21.212736037806845,
+        "holding_to_half_life": 0.9202018997082728,
+        "total_return": 0.17714562880229617,
+        "total_gross_return": 0.17714562880229617,
+        "total_cost": 0.0,
+        "n_obs": 1275
+      }
+    },
+    "5.0": {
+      "in_sample": {
+        "ann_return": -0.020212294912262743,
+        "ann_vol": 0.08941508091673667,
+        "sharpe": -0.22605017749840695,
+        "max_drawdown": -0.2929522920531812,
+        "hit_rate": 0.6410256410256411,
+        "n_trades": 39,
+        "avg_holding_days": 17.41025641025641,
+        "half_life_days": 21.212736037806845,
+        "holding_to_half_life": 0.8207454417585083,
+        "total_return": -0.1465391381139049,
+        "total_gross_return": -0.10808483488630535,
+        "total_cost": 0.03845430322759948,
+        "n_obs": 1827
+      },
+      "out_of_sample": {
+        "ann_return": 0.029975209741519664,
+        "ann_vol": 0.08570772798552403,
+        "sharpe": 0.3497375376300076,
+        "max_drawdown": -0.09938759142563294,
+        "hit_rate": 0.68,
+        "n_trades": 25,
+        "avg_holding_days": 19.52,
+        "half_life_days": 21.212736037806845,
+        "holding_to_half_life": 0.9202018997082728,
+        "total_return": 0.15166028738268877,
+        "total_gross_return": 0.17714562880229617,
+        "total_cost": 0.025485341419607378,
+        "n_obs": 1275
+      }
+    },
+    "10.0": {
+      "in_sample": {
+        "ann_return": -0.025516336736759224,
+        "ann_vol": 0.0894798886429918,
+        "sharpe": -0.28516281282562483,
+        "max_drawdown": -0.3009920333008987,
+        "hit_rate": 0.6153846153846154,
+        "n_trades": 39,
+        "avg_holding_days": 17.41025641025641,
+        "half_life_days": 21.212736037806845,
+        "holding_to_half_life": 0.8207454417585083,
+        "total_return": -0.18499344134150436,
+        "total_gross_return": -0.10808483488630535,
+        "total_cost": 0.07690860645519897,
+        "n_obs": 1827
+      },
+      "out_of_sample": {
+        "ann_return": 0.02493810696682078,
+        "ann_vol": 0.08578655754483976,
+        "sharpe": 0.29069947181160505,
+        "max_drawdown": -0.10191439081386237,
+        "hit_rate": 0.6,
+        "n_trades": 25,
+        "avg_holding_days": 19.52,
+        "half_life_days": 21.212736037806845,
+        "holding_to_half_life": 0.9202018997082728,
+        "total_return": 0.12617494596308135,
+        "total_gross_return": 0.17714562880229617,
+        "total_cost": 0.050970682839214757,
+        "n_obs": 1275
+      }
+    }
+  },
+  "config": {
+    "calendar": {
+      "trading_days_per_year": 252,
+      "dt": 0.003968253968253968
+    },
+    "split": {
+      "in_sample_start": "2015-01-01",
+      "in_sample_end": "2021-12-31",
+      "out_of_sample_start": "2022-01-01",
+      "out_of_sample_end": null
+    },
+    "ou": {
+      "methods": [
+        "ols",
+        "mle"
+      ],
+      "primary_method": "ols",
+      "min_obs": 60
+    },
+    "stationarity": {
+      "significance": 0.05,
+      "adf_regression": "c",
+      "adf_autolag": "AIC",
+      "eg_trend": "c",
+      "johansen_det_order": 0,
+      "johansen_k_ar_diff": 1
+    },
+    "hedge": {
+      "method": "rolling_ols",
+      "window": 252,
+      "min_periods": 126,
+      "add_constant": true,
+      "kalman_delta": 0.0001,
+      "kalman_obs_var": 0.001,
+      "kalman_init_var": 1.0
+    },
+    "signals": {
+      "zscore_method": "rolling",
+      "zscore_window": 60,
+      "zscore_min_periods": 40,
+      "entry_z": 2.0,
+      "exit_z": 0.5,
+      "stop_z": 4.0,
+      "reentry_requires_exit": true
+    },
+    "backtest": {
+      "execution_lag": 1,
+      "cost_bps_per_leg": 5.0,
+      "cost_sensitivity_bps": [
+        0.0,
+        5.0,
+        10.0
+      ],
+      "notional": 1.0,
+      "sizing": "dollar_neutral",
+      "reestimation_window": 252,
+      "reestimation_freq": 21,
+      "require_mean_reverting": true,
+      "max_holding_multiple": null
+    },
+    "results": {
+      "root": "results"
+    },
+    "asset_class": "fx",
+    "pair": {
+      "name": "usdcad_crude",
+      "legs": [
+        "CAD=X",
+        "CL=F"
+      ],
+      "construction": "hedged_spread",
+      "transform": "log"
+    }
+  }
+}

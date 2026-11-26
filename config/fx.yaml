@@ -11,6 +11,12 @@ data:
   alignment: "inner"              # inner join on dates common to all legs
   max_ffill_days: 1               # allow at most 1-day forward fill for holiday mismatches before the join
   drop_weekends: true
+  # Download retries (Yahoo returns HTTP 429 under load): attempt k waits backoff_seconds * 2**k.
+  max_retries: 5
+  backoff_seconds: 5.0
+  # Bad-tick screen (flag only, never drop): a one-day |log return| above this on any leg
+  # is recorded in data.flags.notes; non-positive prices are masked and flagged.
+  bad_tick_max_abs_log_return: 0.10
 
 # Structural breaks are flagged in summary.json and drawn by the UI.
 structural_breaks:
