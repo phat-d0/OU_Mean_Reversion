@@ -16,7 +16,7 @@ We fitted an Ornstein-Uhlenbeck (OU) model to 14 spreads and traded each one wit
    - 56–74% of each pair's OOS P&L comes from a single year (2022, or 2026 for the hedged pair).
    - The futures series are not adjusted for contract rolls, and the different roll dates of Brent and WTI may create some of the apparent mean reversion (§6.1).
 2. **Passing a cointegration test in-sample did not predict profit.** Of the 7 spreads that passed, 4 lost money in-sample at the base cost (KO/PEP, V/MA, AUD/NZD, USD/CAD vs crude), and hedged Brent–WTI only broke even (Sharpe 0.02). AUD/NZD had the strongest test result (EG p = 0.009) and lost money in both periods.
-3. **Several cointegration relationships broke down OOS.** KO/PEP, AUD/NZD and the crack spread no longer pass ADF on OOS data (p = 0.47, 0.16, 0.08), and their OOS half-lives roughly doubled. HD/LOW, which failed the test in-sample, went from IS Sharpe +0.35 to OOS −0.42.
+3. **Several cointegration relationships broke down OOS.** KO/PEP, AUD/NZD and the crack spread no longer pass ADF on OOS data (p = 0.47, 0.17, 0.08), and their OOS half-lives roughly doubled. HD/LOW, which failed the test in-sample, went from IS Sharpe +0.35 to OOS −0.42.
 4. **Trades are held for less than one half-life.** The median holding period is 0.70× the estimated half-life in-sample and 0.65× OOS. The exit at |z| < 0.5 on a 60-day rolling z-score closes trades well before the spread has moved halfway back to its mean.
 5. **Costs matter about as much as the signal.** Each spread trades about 5 round trips a year. Going from 0 to 10 bps lowers OOS annual return by about 1.0 point and OOS Sharpe by a median of 0.21.
 
@@ -31,7 +31,7 @@ We fitted an Ornstein-Uhlenbeck (OU) model to 14 spreads and traded each one wit
 | Signal | Rolling 60-day z-score. Entry \|z\| > 2, exit \|z\| < 0.5, stop \|z\| > 4. After a stop, no re-entry until \|z\| < 0.5. No new entries while the trailing 252-day OU fit is not mean-reverting (refit every 21 days). |
 | Execution | Signal at close t, filled at close t+1. Shares are fixed at entry. Dollar-neutral sizing: $0.50 long and $0.50 short per $1 of notional. |
 | Costs | 5 bps per leg on traded notional at entry and exit (base); sensitivity at 0, 5 and 10 bps. |
-| Quality gate | 112 pytest tests, including OU parameter recovery (OLS and MLE), look-ahead and shift tests, costs strictly lowering returns, and output schema validation. |
+| Quality gate | 114 pytest tests, including OU parameter recovery (OLS and MLE), look-ahead and shift tests, costs strictly lowering returns, and output schema validation. |
 
 Returns are measured on a fixed $1 notional and do not compound. Sharpe ratios are annualised with 252 trading days.
 
@@ -44,17 +44,17 @@ The base cost is 5 bps per leg. Half-lives are in trading days. The OOS ADF p-va
 | Commodities | brent_wti_hedged | EG 0.024 | yes | 16.1 | 0.02 | **1.07** | 0.002 | 6.3 | Held up OOS. IS edge ≈ 0 after costs. |
 | Commodities | brent_wti (1:1) | EG 0.024 | yes | 30.8 | 0.36 | **0.98** | 0.013 | 7.2 | **Held up** |
 | Commodities | crack_321 | Johansen rank 2 | yes | 34.4 | 0.25 | **0.63** | 0.081 | 70.8 | **Held up**, but weakening (OOS half-life ×2) |
-| FX | usdcad_crude | EG 0.003 | yes | 21.2 | −0.23 | 0.35 | 0.003 | 27.9 | OOS gain without an IS edge; β ≈ −0.08, so this is effectively USD/CAD alone |
+| FX | usdcad_crude | EG 0.003 | yes | 21.2 | −0.23 | 0.35 | 0.003 | 28.1 | OOS gain without an IS edge; β ≈ −0.08, so this is effectively USD/CAD alone |
 | Equities | ko_pep | EG 0.026 | yes | 27.0 | −0.40 | 0.31 | 0.468 | 65.1 | **Broke down**: no longer stationary OOS |
 | Equities | v_ma | EG 0.018 | yes | 22.7 | −0.20 | 0.04 | 0.003 | 31.2 | No edge after costs |
-| FX | aud_nzd | EG 0.009 | yes | 35.6 | −0.38 | −0.42 | 0.164 | 76.5 | **Broke down**: strongest IS test, lost in both periods |
+| FX | aud_nzd | EG 0.009 | yes | 35.6 | −0.38 | −0.42 | 0.165 | 76.6 | **Broke down**: strongest IS test, lost in both periods |
 | Equities | xom_cvx | EG 0.748 | yes* | 19.1 | 0.16 | 0.32 | 0.017 | 39.7 | Failed IS test; would not be traded |
 | Equities | hd_low | EG 0.286 | yes* | 30.0 | 0.35 | −0.42 | 0.015 | 54.2 | Failed IS test; **IS gain reversed OOS** |
 | Equities | xlf_kbe | EG 0.834 | yes* | 34.9 | −0.57 | −0.17 | 0.030 | 44.9 | Failed |
 | Commodities | gold_silver_hedged | EG 0.589 | yes* | 68.0 | −0.31 | −0.14 | 0.004 | 30.0 | Failed |
 | Commodities | gold_silver_ratio | EG 0.589 | no | — | −0.20 | −0.03 | 0.215 | 72.1 | Failed |
-| FX | eurchf | ADF 0.610 | no | — | −0.25 | 0.62 | 0.185 | 109.4 | Failed IS test; the OOS gain is not evidence (§3.3) |
-| FX | eurchf_post_snb | ADF 0.538 | no | — | −0.25 | 0.62 | 0.185 | 109.4 | Failed (same OOS as eurchf) |
+| FX | eurchf | ADF 0.610 | no | — | −0.25 | 0.64 | 0.176 | 108.0 | Failed IS test; the OOS gain is not evidence (§3.3) |
+| FX | eurchf_post_snb | ADF 0.538 | no | — | −0.25 | 0.64 | 0.176 | 108.0 | Failed (same OOS as eurchf) |
 
 \* "Mean-reverting" here describes the **rolling-hedge residual**, not the price relationship. See §6.
 
@@ -73,12 +73,12 @@ The base cost is 5 bps per leg. Half-lives are in trading days. The OOS ADF p-va
 (Values are summed daily returns on $1 notional.) The crack spread earned 74% of its OOS P&L in the 2022 energy shock. Outside the best year, these pairs earn about 1.5–2% a year at roughly 3–7% volatility. That is positive, but much weaker than the headline Sharpe suggests.
 
 ### 3.2 What broke down
-- **AUD/NZD** had the strongest IS cointegration test (EG p = 0.009, Johansen rank 2) and lost money both IS and OOS. OOS the spread is no longer stationary (ADF p 0.16), and its half-life more than doubled (36 → 77 days). In 2022–2023 the RBA and RBNZ rate paths diverged, and the cross trended instead of reverting.
+- **AUD/NZD** had the strongest IS cointegration test (EG p = 0.009, Johansen rank 2) and lost money both IS and OOS. OOS the spread is no longer stationary (ADF p 0.17), and its half-life more than doubled (36 → 77 days). In 2022–2023 the RBA and RBNZ rate paths diverged, and the cross trended instead of reverting.
 - **KO/PEP** passed the IS test but lost money IS (−0.40). The OOS spread is non-stationary (ADF p 0.47, half-life 27 → 65 days). The OOS Sharpe of 0.31 comes almost entirely from 2025, which earned more than the whole OOS total, so it doesn't confirm the model.
 - **HD/LOW** is the classic overfitting trap. It failed the IS test, made money IS (+0.35) and lost OOS (−0.42, hit rate 35%). A rule that chose pairs by IS P&L rather than by IS tests would have picked it.
 
 ### 3.3 What looked good OOS but isn't evidence
-- **EUR/CHF** failed the IS ADF test (p 0.61 on the full window, 0.54 after the SNB break) and lost money IS, but made +0.62 Sharpe OOS. The OOS gain happened despite the model, not because of it, so we don't count it. The two EUR/CHF variants have identical OOS numbers because they share the same OOS data and signals. They differ only in where the IS window starts.
+- **EUR/CHF** failed the IS ADF test (p 0.61 on the full window, 0.54 after the SNB break) and lost money IS, but made +0.64 Sharpe OOS. The OOS gain happened despite the model, not because of it, so we don't count it. The two EUR/CHF variants have identical OOS numbers because they share the same OOS data and signals. They differ only in where the IS window starts.
 - **XOM/CVX** failed Engle-Granger (p 0.75) but was profitable in both periods (IS 0.16, OOS 0.32). This is a candidate for further study, but under the project's rules it isn't tradeable.
 
 ## 4. Half-life vs holding period
@@ -115,8 +115,8 @@ OLS and exact MLE give the same half-lives to three decimals. For a Gaussian AR(
 | xlf_kbe | −0.47 | −0.57 | −0.68 | −0.06 | −0.17 | −0.28 |
 | gold_silver_hedged | −0.25 | −0.31 | −0.37 | −0.10 | −0.14 | −0.18 |
 | gold_silver_ratio | −0.15 | −0.20 | −0.25 | −0.01 | −0.03 | −0.06 |
-| eurchf | −0.12 | −0.25 | −0.37 | 0.77 | 0.62 | 0.47 |
-| eurchf_post_snb | −0.12 | −0.25 | −0.38 | 0.77 | 0.62 | 0.47 |
+| eurchf | −0.12 | −0.25 | −0.37 | 0.79 | 0.64 | 0.49 |
+| eurchf_post_snb | −0.12 | −0.25 | −0.38 | 0.79 | 0.64 | 0.49 |
 
 - Each round trip costs 2 legs × (entry + exit) × the bps rate on $0.50 per leg. That is 10 bps of notional at 5 bps per leg. At about 5 round trips a year, 0 → 10 bps costs about **1.0% a year** (median 0.99%, range 0.87–1.31%). Brent–WTI trades most often and pays the most.
 - The drop in Sharpe from that cost is largest where volatility is low. AUD/NZD, with 1.6% OOS volatility, loses 0.55 Sharpe going from 0 to 10 bps.
@@ -167,7 +167,7 @@ OLS and exact MLE give the same half-lives to three decimals. For a Gaussian AR(
 
 ## 8. How to reproduce
 
-The commands below rebuild the environment, run all 112 tests, re-download the data and regenerate all 14 result folders, then launch the dashboard.
+The commands below rebuild the environment, run all 114 tests, re-download the data and regenerate all 14 result folders, then launch the dashboard.
 
 ```bash
 make install
