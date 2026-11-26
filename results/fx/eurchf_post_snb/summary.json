@@ -1,0 +1,355 @@
+{
+  "asset_class": "fx",
+  "pair": "eurchf_post_snb",
+  "legs": [
+    "EURCHF=X"
+  ],
+  "construction": "single",
+  "transform": "log",
+  "data": {
+    "start": "2015-02-02",
+    "end": "2026-11-26",
+    "n_obs": 3077,
+    "flags": {
+      "roll_gaps": [],
+      "structural_breaks": [
+        {
+          "date": "2015-01-15",
+          "label": "SNB removes EUR/CHF 1.20 floor"
+        }
+      ],
+      "non_positive_prices": [],
+      "notes": [
+        "alignment: raw rows {'EURCHF=X': 3360}",
+        "alignment: NaN price rows dropped {'EURCHF=X': 0}",
+        "alignment: weekend rows dropped {'EURCHF=X': 0}",
+        "alignment: single series, final rows 3360",
+        "large one-day move (|log r| > 0.1): EURCHF=X -0.1888 on 2015-01-16"
+      ],
+      "bad_ticks": [
+        {
+          "date": "2015-01-16",
+          "leg": "EURCHF=X",
+          "log_return": -0.188805,
+          "reverses_next_day": false
+        }
+      ],
+      "alignment": {
+        "raw_rows": {
+          "EURCHF=X": 3360
+        },
+        "nan_dropped": {
+          "EURCHF=X": 0
+        },
+        "weekend_dropped": {
+          "EURCHF=X": 0
+        },
+        "ffilled": {
+          "EURCHF=X": 0
+        },
+        "union_rows": 3360,
+        "join_dropped": 0,
+        "final_rows": 3360
+      }
+    }
+  },
+  "split": {
+    "in_sample": [
+      "2015-02-01",
+      "2021-12-31"
+    ],
+    "out_of_sample": [
+      "2022-01-01",
+      "2026-11-26"
+    ]
+  },
+  "hedge_ratio_in_sample": null,
+  "ou_params": {
+    "in_sample": {
+      "ols": {
+        "kappa": 1.052641626904425,
+        "mu": 0.09235690850822155,
+        "sigma": 0.04813078694045197,
+        "half_life": 0.6584835359383711,
+        "b": 0.9958315628402027,
+        "r2": 0.9912766509535537,
+        "n_obs": 1803,
+        "mean_reverting": false,
+        "method": "ols",
+        "unit_root_pvalue": 0.33530190529286275
+      },
+      "mle": {
+        "kappa": 1.052641840648289,
+        "mu": 0.09235691434175063,
+        "sigma": 0.04810406956916206,
+        "half_life": 0.6584834022302,
+        "b": 0.9958315619955483,
+        "r2": 0.9912766509535537,
+        "n_obs": 1803,
+        "mean_reverting": false,
+        "method": "mle",
+        "unit_root_pvalue": 0.33530190529286275
+      }
+    },
+    "out_of_sample_diagnostic": {
+      "ols": {
+        "kappa": 1.5903912374798825,
+        "mu": -0.05871554779401468,
+        "sigma": 0.05481896007793722,
+        "half_life": 0.4358343810157676,
+        "b": 0.9937087966743939,
+        "r2": 0.9900481166470023,
+        "n_obs": 1274,
+        "mean_reverting": false,
+        "method": "ols",
+        "unit_root_pvalue": 0.18817439672584085
+      }
+    }
+  },
+  "tests": {
+    "in_sample": {
+      "adf": {
+        "name": "adf",
+        "statistic": -1.4918026969585516,
+        "pvalue": 0.5375624598661334,
+        "critical_values": {
+          "1%": -3.4340003240943844,
+          "5%": -2.8631524150111547,
+          "10%": -2.567628397867784
+        },
+        "n_obs": 1794,
+        "extra": {
+          "used_lag": 8,
+          "regression": "c"
+        }
+      },
+      "engle_granger": null,
+      "johansen": null
+    },
+    "out_of_sample_diagnostic": {
+      "adf": {
+        "name": "adf",
+        "statistic": -2.2512455884855838,
+        "pvalue": 0.18817439672582986,
+        "critical_values": {
+          "1%": -3.435497317510684,
+          "5%": -2.8638130956084464,
+          "10%": -2.5679802172809003
+        },
+        "n_obs": 1273,
+        "extra": {
+          "used_lag": 0,
+          "regression": "c"
+        }
+      }
+    }
+  },
+  "verdict": {
+    "cointegrated_in_sample": false,
+    "mean_reverting_in_sample": false
+  },
+  "metrics": {
+    "in_sample": {
+      "ann_return": -0.007345610167955178,
+      "ann_vol": 0.029290115879763455,
+      "sharpe": -0.2507880200306842,
+      "max_drawdown": -0.07580701946592652,
+      "hit_rate": 0.5185185185185185,
+      "n_trades": 27,
+      "avg_holding_days": 25.74074074074074,
+      "half_life_days": null,
+      "holding_to_half_life": null,
+      "total_return": -0.052556091796917406,
+      "total_gross_return": -0.026041237140595953,
+      "total_cost": 0.026514854656321446,
+      "n_obs": 1803
+    },
+    "out_of_sample": {
+      "ann_return": 0.023115368097781853,
+      "ann_vol": 0.03731880312398899,
+      "sharpe": 0.619402718275362,
+      "max_drawdown": -0.04232334523878319,
+      "hit_rate": 0.6785714285714286,
+      "n_trades": 28,
+      "avg_holding_days": 18.642857142857142,
+      "half_life_days": null,
+      "holding_to_half_life": null,
+      "total_return": 0.11686102760545271,
+      "total_gross_return": 0.14483322324884612,
+      "total_cost": 0.02797219564339341,
+      "n_obs": 1274
+    }
+  },
+  "cost_sensitivity": {
+    "0.0": {
+      "in_sample": {
+        "ann_return": -0.003639707021314576,
+        "ann_vol": 0.029256025477510057,
+        "sharpe": -0.12440879996199493,
+        "max_drawdown": -0.06770040942571715,
+        "hit_rate": 0.5925925925925926,
+        "n_trades": 27,
+        "avg_holding_days": 25.74074074074074,
+        "half_life_days": null,
+        "holding_to_half_life": null,
+        "total_return": -0.026041237140595953,
+        "total_gross_return": -0.026041237140595953,
+        "total_cost": 0.0,
+        "n_obs": 1803
+      },
+      "out_of_sample": {
+        "ann_return": 0.028648329873398132,
+        "ann_vol": 0.03732545665209695,
+        "sharpe": 0.7675279137352138,
+        "max_drawdown": -0.042161756369631924,
+        "hit_rate": 0.7142857142857143,
+        "n_trades": 28,
+        "avg_holding_days": 18.642857142857142,
+        "half_life_days": null,
+        "holding_to_half_life": null,
+        "total_return": 0.14483322324884612,
+        "total_gross_return": 0.14483322324884612,
+        "total_cost": 0.0,
+        "n_obs": 1274
+      }
+    },
+    "5.0": {
+      "in_sample": {
+        "ann_return": -0.007345610167955178,
+        "ann_vol": 0.029290115879763455,
+        "sharpe": -0.2507880200306842,
+        "max_drawdown": -0.07580701946592652,
+        "hit_rate": 0.5185185185185185,
+        "n_trades": 27,
+        "avg_holding_days": 25.74074074074074,
+        "half_life_days": null,
+        "holding_to_half_life": null,
+        "total_return": -0.052556091796917406,
+        "total_gross_return": -0.026041237140595953,
+        "total_cost": 0.026514854656321446,
+        "n_obs": 1803
+      },
+      "out_of_sample": {
+        "ann_return": 0.023115368097781853,
+        "ann_vol": 0.03731880312398899,
+        "sharpe": 0.619402718275362,
+        "max_drawdown": -0.04232334523878319,
+        "hit_rate": 0.6785714285714286,
+        "n_trades": 28,
+        "avg_holding_days": 18.642857142857142,
+        "half_life_days": null,
+        "holding_to_half_life": null,
+        "total_return": 0.11686102760545271,
+        "total_gross_return": 0.14483322324884612,
+        "total_cost": 0.02797219564339341,
+        "n_obs": 1274
+      }
+    },
+    "10.0": {
+      "in_sample": {
+        "ann_return": -0.01105151331459578,
+        "ann_vol": 0.029385507431498707,
+        "sharpe": -0.3760872035427069,
+        "max_drawdown": -0.08422843963275098,
+        "hit_rate": 0.4444444444444444,
+        "n_trades": 27,
+        "avg_holding_days": 25.74074074074074,
+        "half_life_days": null,
+        "holding_to_half_life": null,
+        "total_return": -0.07907094645323885,
+        "total_gross_return": -0.026041237140595953,
+        "total_cost": 0.05302970931264289,
+        "n_obs": 1803
+      },
+      "out_of_sample": {
+        "ann_return": 0.01758240632216557,
+        "ann_vol": 0.0373829591177753,
+        "sharpe": 0.47033211755046106,
+        "max_drawdown": -0.044373876383264906,
+        "hit_rate": 0.6785714285714286,
+        "n_trades": 28,
+        "avg_holding_days": 18.642857142857142,
+        "half_life_days": null,
+        "holding_to_half_life": null,
+        "total_return": 0.08888883196205928,
+        "total_gross_return": 0.14483322324884612,
+        "total_cost": 0.05594439128678682,
+        "n_obs": 1274
+      }
+    }
+  },
+  "config": {
+    "calendar": {
+      "trading_days_per_year": 252,
+      "dt": 0.003968253968253968
+    },
+    "split": {
+      "in_sample_start": "2015-02-01",
+      "in_sample_end": "2021-12-31",
+      "out_of_sample_start": "2022-01-01",
+      "out_of_sample_end": null
+    },
+    "ou": {
+      "methods": [
+        "ols",
+        "mle"
+      ],
+      "primary_method": "ols",
+      "min_obs": 60
+    },
+    "stationarity": {
+      "significance": 0.05,
+      "adf_regression": "c",
+      "adf_autolag": "AIC",
+      "eg_trend": "c",
+      "johansen_det_order": 0,
+      "johansen_k_ar_diff": 1
+    },
+    "hedge": {
+      "method": "rolling_ols",
+      "window": 252,
+      "min_periods": 126,
+      "add_constant": true,
+      "kalman_delta": 0.0001,
+      "kalman_obs_var": 0.001,
+      "kalman_init_var": 1.0
+    },
+    "signals": {
+      "zscore_method": "rolling",
+      "zscore_window": 60,
+      "zscore_min_periods": 40,
+      "entry_z": 2.0,
+      "exit_z": 0.5,
+      "stop_z": 4.0,
+      "reentry_requires_exit": true
+    },
+    "backtest": {
+      "execution_lag": 1,
+      "cost_bps_per_leg": 5.0,
+      "cost_sensitivity_bps": [
+        0.0,
+        5.0,
+        10.0
+      ],
+      "notional": 1.0,
+      "sizing": "dollar_neutral",
+      "reestimation_window": 252,
+      "reestimation_freq": 21,
+      "require_mean_reverting": true,
+      "max_holding_multiple": null
+    },
+    "results": {
+      "root": "results"
+    },
+    "asset_class": "fx",
+    "pair": {
+      "name": "eurchf_post_snb",
+      "legs": [
+        "EURCHF=X"
+      ],
+      "construction": "single",
+      "transform": "log",
+      "in_sample_start_override": "2015-02-01"
+    }
+  }
+}
