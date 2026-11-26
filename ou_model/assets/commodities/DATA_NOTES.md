@@ -32,10 +32,8 @@ non-positive price is
 masked to NaN **before** any spread is built, level spreads included. That date has NaN
 spread, z-score and leg weights, and it is listed in `data.flags.non_positive_prices`. No other leg has
 a non-positive price.
-Known engine limitation: if a position is open across a masked date, the engine sets that leg's
-price change to 0 on the NaN day and on the day after. The masked leg's move between the surrounding
-valid closes is therefore missing from P&L (this affects brent_wti and brent_wti_hedged on
-2020-04-20/21). This has been reported to the Lead.
+P&L across the masked date: the engine forward-fills leg prices for P&L, so a position open
+across 2020-04-20 books the full 04-17 -> 04-21 move of the masked leg on 04-21 (nothing is lost).
 
 ## 3. Units: crack spread
 RB=F and HO=F are quoted in $/gallon, and CL=F in $/barrel. The crack legs are multiplied by
