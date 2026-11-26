@@ -10,6 +10,9 @@ data:
   cache_dir: "data_cache/equities"
   max_ffill_days: 0               # equities share one calendar: inner-join, no fill
   min_price: 0.01
+  max_retries: 5                  # yfinance attempts per ticker (HTTP 429 under load)
+  retry_backoff_s: 10.0           # sleep backoff_s * 2**attempt between attempts
+  cache_start_slack_days: 7       # cache counts as complete if it starts within this of download_start
 
 overrides: {}
 
