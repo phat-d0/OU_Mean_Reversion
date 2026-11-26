@@ -18,7 +18,8 @@ the contract specification changes:
 returns, so a jump cannot inflate its own yardstick. Flags are reported per pair in
 `summary.json → data.flags.roll_gaps` as `{date, leg, log_return, zscore}`. They can also catch
 genuine shocks (e.g. COVID in March 2020, the 2022 invasion of Ukraine); the rule does not tell these
-apart from rolls. Some flags fall in the 2014 warm-up period, before the in-sample start.
+apart from rolls. The 2014 warm-up period feeds the rolling std, but only flags dated on or after
+the pair's in-sample start are reported. Earlier flags fall outside the written results.
 
 **Not corrected.** The flagged days stay in the data, so spreads, z-scores and P&L include the
 jumps. For a 1:1 Brent–WTI spread the two legs roll on different dates, so a roll shows up as a

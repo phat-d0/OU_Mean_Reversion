@@ -11,8 +11,8 @@ from ou_model.core.config import get, load_config, pair_config
 from ou_model.core.pipeline import evaluate_pair
 from ou_model.core.results import validate_pair_results
 
-from .cleaning import (align_legs, drop_incomplete_last_bar, find_non_positive, mask_non_positive,
-                       roll_gap_flags)
+from .cleaning import (align_legs, drop_incomplete_last_bar, find_non_positive, flags_from,
+                       mask_non_positive, roll_gap_flags)
 from .construction import build_spread, scale_legs
 from .data import load_prices
 
@@ -25,8 +25,9 @@ def prepare_pair(prices: pd.DataFrame, pair: dict, cfg: dict
     """Legs (scaled, non-positive masked), spread, leg weights, hedge history and meta for one pair."""
     data_cfg, roll_cfg = cfg["asset"]["data"], cfg["asset"]["roll_gap"]
     raw = align_legs(prices, list(pair["legs"]), int(data_cfg.get("max_ffill_days", 0)))
-    non_pos = find_non_positive(raw)
-    gaps = roll_gap_flags(raw, roll_cfg)
+    start = get(cfg, "split.in_sample_start")  # flags before it are warm-up, not written
+    non_pos = flags_from(find_non_positive(raw), start)
+    gaps = flags_from(roll_gap_flags(raw, roll_cfg), start)  # detection still uses warm-up std
     legs = mask_non_positive(raw)
     scale = pair.get("scale") or [1.0] * legs.shape[1]
     legs = scale_legs(legs, scale)
