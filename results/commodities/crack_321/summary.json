@@ -1,0 +1,622 @@
+{
+  "asset_class": "commodities",
+  "pair": "crack_321",
+  "legs": [
+    "CL=F",
+    "RB=F",
+    "HO=F"
+  ],
+  "construction": "fixed_weights",
+  "transform": "level",
+  "data": {
+    "start": "2015-01-02",
+    "end": "2026-11-25",
+    "n_obs": 2993,
+    "flags": {
+      "roll_gaps": [
+        {
+          "date": "2014-09-02",
+          "leg": "RB=F",
+          "log_return": -0.090077,
+          "zscore": 8.555
+        },
+        {
+          "date": "2014-11-28",
+          "leg": "CL=F",
+          "log_return": -0.107942,
+          "zscore": 7.466
+        },
+        {
+          "date": "2014-11-28",
+          "leg": "HO=F",
+          "log_return": -0.071649,
+          "zscore": 6.693
+        },
+        {
+          "date": "2015-03-02",
+          "leg": "HO=F",
+          "log_return": -0.197283,
+          "zscore": 6.931
+        },
+        {
+          "date": "2015-09-01",
+          "leg": "RB=F",
+          "log_return": -0.161616,
+          "zscore": 5.391
+        },
+        {
+          "date": "2016-03-01",
+          "leg": "RB=F",
+          "log_return": 0.216549,
+          "zscore": 5.865
+        },
+        {
+          "date": "2017-03-01",
+          "leg": "RB=F",
+          "log_return": 0.104169,
+          "zscore": 5.882
+        },
+        {
+          "date": "2017-08-31",
+          "leg": "RB=F",
+          "log_return": 0.12699,
+          "zscore": 6.869
+        },
+        {
+          "date": "2017-09-01",
+          "leg": "RB=F",
+          "log_return": -0.202344,
+          "zscore": 8.554
+        },
+        {
+          "date": "2018-03-01",
+          "leg": "RB=F",
+          "log_return": 0.075951,
+          "zscore": 5.001
+        },
+        {
+          "date": "2018-11-13",
+          "leg": "CL=F",
+          "log_return": -0.073377,
+          "zscore": 5.106
+        },
+        {
+          "date": "2019-09-16",
+          "leg": "CL=F",
+          "log_return": 0.136944,
+          "zscore": 5.618
+        },
+        {
+          "date": "2019-09-16",
+          "leg": "HO=F",
+          "log_return": 0.104092,
+          "zscore": 5.723
+        },
+        {
+          "date": "2020-03-02",
+          "leg": "RB=F",
+          "log_return": 0.09827,
+          "zscore": 5.118
+        },
+        {
+          "date": "2020-03-06",
+          "leg": "CL=F",
+          "log_return": -0.106087,
+          "zscore": 5.866
+        },
+        {
+          "date": "2020-03-09",
+          "leg": "CL=F",
+          "log_return": -0.282206,
+          "zscore": 12.623
+        },
+        {
+          "date": "2020-03-09",
+          "leg": "HO=F",
+          "log_return": -0.174928,
+          "zscore": 8.805
+        },
+        {
+          "date": "2020-03-09",
+          "leg": "RB=F",
+          "log_return": -0.200279,
+          "zscore": 7.778
+        },
+        {
+          "date": "2020-03-12",
+          "leg": "RB=F",
+          "log_return": -0.212772,
+          "zscore": 5.813
+        },
+        {
+          "date": "2020-03-16",
+          "leg": "RB=F",
+          "log_return": -0.264959,
+          "zscore": 5.875
+        },
+        {
+          "date": "2020-03-18",
+          "leg": "CL=F",
+          "log_return": -0.27992,
+          "zscore": 6.027
+        },
+        {
+          "date": "2020-03-23",
+          "leg": "RB=F",
+          "log_return": -0.385352,
+          "zscore": 6.435
+        },
+        {
+          "date": "2021-07-19",
+          "leg": "CL=F",
+          "log_return": -0.078026,
+          "zscore": 5.017
+        },
+        {
+          "date": "2021-11-26",
+          "leg": "CL=F",
+          "log_return": -0.139985,
+          "zscore": 8.537
+        },
+        {
+          "date": "2021-11-26",
+          "leg": "HO=F",
+          "log_return": -0.129045,
+          "zscore": 8.812
+        },
+        {
+          "date": "2021-11-26",
+          "leg": "RB=F",
+          "log_return": -0.133698,
+          "zscore": 6.719
+        },
+        {
+          "date": "2022-03-01",
+          "leg": "RB=F",
+          "log_return": 0.099203,
+          "zscore": 6.216
+        },
+        {
+          "date": "2022-03-02",
+          "leg": "HO=F",
+          "log_return": 0.103496,
+          "zscore": 5.744
+        },
+        {
+          "date": "2022-03-08",
+          "leg": "HO=F",
+          "log_return": 0.123572,
+          "zscore": 5.26
+        },
+        {
+          "date": "2022-03-09",
+          "leg": "CL=F",
+          "log_return": -0.129267,
+          "zscore": 5.407
+        },
+        {
+          "date": "2022-03-09",
+          "leg": "HO=F",
+          "log_return": -0.247536,
+          "zscore": 8.945
+        },
+        {
+          "date": "2022-08-01",
+          "leg": "RB=F",
+          "log_return": -0.151378,
+          "zscore": 5.173
+        },
+        {
+          "date": "2024-03-01",
+          "leg": "RB=F",
+          "log_return": 0.126258,
+          "zscore": 6.139
+        },
+        {
+          "date": "2024-09-03",
+          "leg": "RB=F",
+          "log_return": -0.111827,
+          "zscore": 7.22
+        },
+        {
+          "date": "2025-03-03",
+          "leg": "RB=F",
+          "log_return": 0.104711,
+          "zscore": 7.309
+        },
+        {
+          "date": "2026-02-02",
+          "leg": "HO=F",
+          "log_return": -0.147774,
+          "zscore": 6.102
+        },
+        {
+          "date": "2026-03-02",
+          "leg": "RB=F",
+          "log_return": 0.131785,
+          "zscore": 7.757
+        },
+        {
+          "date": "2026-11-02",
+          "leg": "RB=F",
+          "log_return": -0.132807,
+          "zscore": 5.417
+        }
+      ],
+      "structural_breaks": [],
+      "non_positive_prices": [
+        {
+          "date": "2020-04-20",
+          "leg": "CL=F",
+          "price": -37.630001068115234
+        }
+      ],
+      "notes": [
+        "yfinance continuous front-month futures are not back-adjusted; roll_gaps lists |log return| / prior-60d std > 5.0 (contract rolls and genuine shocks alike); P&L across those dates includes the jump.",
+        "legs scaled by [1.0, 42.0, 42.0] (RB/HO $/gal x42 -> $/bbl); spread and P&L use scaled prices",
+        "1 non-positive price(s) masked to NaN before spread construction"
+      ]
+    }
+  },
+  "split": {
+    "in_sample": [
+      "2015-01-01",
+      "2021-12-31"
+    ],
+    "out_of_sample": [
+      "2022-01-01",
+      "2026-11-25"
+    ]
+  },
+  "hedge_ratio_in_sample": null,
+  "ou_params": {
+    "in_sample": {
+      "ols": {
+        "kappa": 5.077513504784,
+        "mu": 52.23213072867762,
+        "sigma": 43.578843820051944,
+        "half_life": 0.1365131141269967,
+        "b": 0.9800527687398639,
+        "r2": 0.9608835387927721,
+        "n_obs": 1760,
+        "mean_reverting": true,
+        "method": "ols",
+        "unit_root_pvalue": 0.0005896723778064889
+      },
+      "mle": {
+        "kappa": 5.077513500151458,
+        "mu": 52.23212865318594,
+        "sigma": 43.55406121353896,
+        "half_life": 0.1365131142515464,
+        "b": 0.9800527687578803,
+        "r2": 0.9608835387927721,
+        "n_obs": 1760,
+        "mean_reverting": true,
+        "method": "mle",
+        "unit_root_pvalue": 0.0005896723778064889
+      }
+    },
+    "out_of_sample_diagnostic": {
+      "ols": {
+        "kappa": 2.4664254844933042,
+        "mu": 104.12645100513538,
+        "sigma": 88.30692060045645,
+        "half_life": 0.28103309218861056,
+        "b": 0.9902603380301332,
+        "r2": 0.9813374533019438,
+        "n_obs": 1232,
+        "mean_reverting": false,
+        "method": "ols",
+        "unit_root_pvalue": 0.11539847382252116
+      }
+    }
+  },
+  "tests": {
+    "in_sample": {
+      "adf": {
+        "name": "adf",
+        "statistic": -3.7107167195151307,
+        "pvalue": 0.003964914309613684,
+        "critical_values": {
+          "1%": -3.434085825118835,
+          "5%": -2.8631901587664874,
+          "10%": -2.5676484953770067
+        },
+        "n_obs": 1753,
+        "extra": {
+          "used_lag": 6,
+          "regression": "c"
+        }
+      },
+      "engle_granger": {
+        "name": "engle_granger",
+        "statistic": -4.21309776430082,
+        "pvalue": 0.012958208398988947,
+        "critical_values": {
+          "1%": -4.301957314489862,
+          "5%": -3.7455317227803984,
+          "10%": -3.4557140612285195
+        },
+        "n_obs": 1760,
+        "extra": {
+          "hedge_ratio": [
+            0.3313588818169607,
+            0.4482646188531512
+          ],
+          "alpha": -2.184288801227894,
+          "trend": "c"
+        }
+      },
+      "johansen": {
+        "trace_stats": [
+          48.71450317005502,
+          18.687367216289136,
+          2.7968412653699177
+        ],
+        "trace_crit_95": [
+          29.7961,
+          15.4943,
+          3.8415
+        ],
+        "max_eig_stats": [
+          30.02713595376587,
+          15.890525950919221,
+          2.7968412653699177
+        ],
+        "max_eig_crit_95": [
+          21.1314,
+          14.2639,
+          3.8415
+        ],
+        "rank": 2,
+        "weights": [
+          1.0,
+          -0.4411650800311314,
+          -0.35035776771352817
+        ],
+        "legs": [
+          "CL=F",
+          "RB=F",
+          "HO=F"
+        ],
+        "n_obs": 1760
+      }
+    },
+    "out_of_sample_diagnostic": {
+      "adf": {
+        "name": "adf",
+        "statistic": -2.6624345364710877,
+        "pvalue": 0.08076734419462422,
+        "critical_values": {
+          "1%": -3.4356776419985953,
+          "5%": -2.863892657513944,
+          "10%": -2.5680225884063717
+        },
+        "n_obs": 1230,
+        "extra": {
+          "used_lag": 1,
+          "regression": "c"
+        }
+      }
+    }
+  },
+  "verdict": {
+    "cointegrated_in_sample": true,
+    "mean_reverting_in_sample": true
+  },
+  "metrics": {
+    "in_sample": {
+      "ann_return": 0.019472682969765395,
+      "ann_vol": 0.07749081091512933,
+      "sharpe": 0.2512902206055446,
+      "max_drawdown": -0.1328534399675042,
+      "hit_rate": 0.7878787878787878,
+      "n_trades": 33,
+      "avg_holding_days": 19.333333333333332,
+      "half_life_days": 34.40130476000317,
+      "holding_to_half_life": 0.5619941879591531,
+      "total_return": 0.1360769631339558,
+      "total_gross_return": 0.16913580022522803,
+      "total_cost": 0.03305883709127223,
+      "n_obs": 1761
+    },
+    "out_of_sample": {
+      "ann_return": 0.04408139593716422,
+      "ann_vol": 0.07025832212787025,
+      "sharpe": 0.627418853768469,
+      "max_drawdown": -0.06162633120764481,
+      "hit_rate": 0.7083333333333334,
+      "n_trades": 24,
+      "avg_holding_days": 16.666666666666668,
+      "half_life_days": 34.40130476000317,
+      "holding_to_half_life": 0.4844777482406493,
+      "total_return": 0.21550904680391395,
+      "total_gross_return": 0.2390999573987512,
+      "total_cost": 0.02359091059483724,
+      "n_obs": 1232
+    }
+  },
+  "cost_sensitivity": {
+    "0.0": {
+      "in_sample": {
+        "ann_return": 0.024203419453013894,
+        "ann_vol": 0.07745970346138112,
+        "sharpe": 0.3124646541550592,
+        "max_drawdown": -0.13031763283137554,
+        "hit_rate": 0.7878787878787878,
+        "n_trades": 33,
+        "avg_holding_days": 19.333333333333332,
+        "half_life_days": 34.40130476000317,
+        "holding_to_half_life": 0.5619941879591531,
+        "total_return": 0.16913580022522803,
+        "total_gross_return": 0.16913580022522803,
+        "total_cost": 0.0,
+        "n_obs": 1761
+      },
+      "out_of_sample": {
+        "ann_return": 0.04890680946792638,
+        "ann_vol": 0.0701719058978547,
+        "sharpe": 0.6969571204053838,
+        "max_drawdown": -0.06124769059403949,
+        "hit_rate": 0.7083333333333334,
+        "n_trades": 24,
+        "avg_holding_days": 16.666666666666668,
+        "half_life_days": 34.40130476000317,
+        "holding_to_half_life": 0.4844777482406493,
+        "total_return": 0.2390999573987512,
+        "total_gross_return": 0.2390999573987512,
+        "total_cost": 0.0,
+        "n_obs": 1232
+      }
+    },
+    "5.0": {
+      "in_sample": {
+        "ann_return": 0.019472682969765395,
+        "ann_vol": 0.07749081091512933,
+        "sharpe": 0.2512902206055446,
+        "max_drawdown": -0.1328534399675042,
+        "hit_rate": 0.7878787878787878,
+        "n_trades": 33,
+        "avg_holding_days": 19.333333333333332,
+        "half_life_days": 34.40130476000317,
+        "holding_to_half_life": 0.5619941879591531,
+        "total_return": 0.1360769631339558,
+        "total_gross_return": 0.16913580022522803,
+        "total_cost": 0.03305883709127223,
+        "n_obs": 1761
+      },
+      "out_of_sample": {
+        "ann_return": 0.04408139593716422,
+        "ann_vol": 0.07025832212787025,
+        "sharpe": 0.627418853768469,
+        "max_drawdown": -0.06162633120764481,
+        "hit_rate": 0.7083333333333334,
+        "n_trades": 24,
+        "avg_holding_days": 16.666666666666668,
+        "half_life_days": 34.40130476000317,
+        "holding_to_half_life": 0.4844777482406493,
+        "total_return": 0.21550904680391395,
+        "total_gross_return": 0.2390999573987512,
+        "total_cost": 0.02359091059483724,
+        "n_obs": 1232
+      }
+    },
+    "10.0": {
+      "in_sample": {
+        "ann_return": 0.014741946486516902,
+        "ann_vol": 0.07755159254019774,
+        "sharpe": 0.19009211808094886,
+        "max_drawdown": -0.1354532667590486,
+        "hit_rate": 0.7575757575757576,
+        "n_trades": 33,
+        "avg_holding_days": 19.333333333333332,
+        "half_life_days": 34.40130476000317,
+        "holding_to_half_life": 0.5619941879591531,
+        "total_return": 0.1030181260426836,
+        "total_gross_return": 0.16913580022522803,
+        "total_cost": 0.06611767418254447,
+        "n_obs": 1761
+      },
+      "out_of_sample": {
+        "ann_return": 0.03925598240640205,
+        "ann_vol": 0.0703778458745742,
+        "sharpe": 0.5577889166480482,
+        "max_drawdown": -0.06200968254745045,
+        "hit_rate": 0.625,
+        "n_trades": 24,
+        "avg_holding_days": 16.666666666666668,
+        "half_life_days": 34.40130476000317,
+        "holding_to_half_life": 0.4844777482406493,
+        "total_return": 0.1919181362090767,
+        "total_gross_return": 0.2390999573987512,
+        "total_cost": 0.04718182118967448,
+        "n_obs": 1232
+      }
+    }
+  },
+  "config": {
+    "calendar": {
+      "trading_days_per_year": 252,
+      "dt": 0.003968253968253968
+    },
+    "split": {
+      "in_sample_start": "2015-01-01",
+      "in_sample_end": "2021-12-31",
+      "out_of_sample_start": "2022-01-01",
+      "out_of_sample_end": null
+    },
+    "ou": {
+      "methods": [
+        "ols",
+        "mle"
+      ],
+      "primary_method": "ols",
+      "min_obs": 60
+    },
+    "stationarity": {
+      "significance": 0.05,
+      "adf_regression": "c",
+      "adf_autolag": "AIC",
+      "eg_trend": "c",
+      "johansen_det_order": 0,
+      "johansen_k_ar_diff": 1
+    },
+    "hedge": {
+      "method": "rolling_ols",
+      "window": 252,
+      "min_periods": 126,
+      "add_constant": true,
+      "kalman_delta": 0.0001,
+      "kalman_obs_var": 0.001,
+      "kalman_init_var": 1.0
+    },
+    "signals": {
+      "zscore_method": "rolling",
+      "zscore_window": 60,
+      "zscore_min_periods": 40,
+      "entry_z": 2.0,
+      "exit_z": 0.5,
+      "stop_z": 4.0,
+      "reentry_requires_exit": true
+    },
+    "backtest": {
+      "execution_lag": 1,
+      "cost_bps_per_leg": 5.0,
+      "cost_sensitivity_bps": [
+        0.0,
+        5.0,
+        10.0
+      ],
+      "notional": 1.0,
+      "sizing": "dollar_neutral",
+      "reestimation_window": 252,
+      "reestimation_freq": 21,
+      "require_mean_reverting": true,
+      "max_holding_multiple": null
+    },
+    "results": {
+      "root": "results"
+    },
+    "asset_class": "commodities",
+    "pair": {
+      "name": "crack_321",
+      "legs": [
+        "CL=F",
+        "RB=F",
+        "HO=F"
+      ],
+      "construction": "fixed_weights",
+      "transform": "level",
+      "weights": [
+        -3.0,
+        2.0,
+        1.0
+      ],
+      "scale": [
+        1.0,
+        42.0,
+        42.0
+      ]
+    }
+  }
+}

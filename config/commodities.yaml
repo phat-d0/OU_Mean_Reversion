@@ -11,6 +11,9 @@ data:
   cache_dir: "data_cache/commodities"
   max_ffill_days: 0
   barrels_per_gallon_factor: 42.0 # RB=F and HO=F quote $/gallon -> x42 = $/barrel
+  drop_incomplete_last_bar: true  # yfinance returns today's unsettled bar; drop rows dated >= today
+  retries: 5                      # download attempts per ticker (Yahoo 429s under load)
+  retry_backoff_s: 10.0           # first wait; doubles each attempt
 
 roll_gap:
   detect: true
