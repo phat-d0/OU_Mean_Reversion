@@ -5,7 +5,7 @@ import pandas as pd
 import pytest
 
 from ou_model.assets.commodities.cleaning import (align_legs, detect_roll_gaps,
-                                                  drop_incomplete_last_bar, find_non_positive,
+                                                  drop_incomplete_last_bar, find_non_positive, flags_from,
                                                   mask_non_positive, roll_gap_flags)
 
 
@@ -73,3 +73,9 @@ def test_drop_incomplete_last_bar():
     idx = pd.date_range("2026-11-24", periods=3)
     df = pd.DataFrame({"A": [1.0, 2.0, 3.0]}, index=idx)
     assert list(drop_incomplete_last_bar(df, today="2026-11-26").index) == list(idx[:2])
+
+
+def test_flags_from_drops_warmup_dates():
+    flags = [{"date": "2014-09-02", "leg": "RB=F"}, {"date": "2015-01-02", "leg": "CL=F"},
+             {"date": "2020-04-20", "leg": "CL=F"}]
+    assert [f["date"] for f in flags_from(flags, "2015-01-01")] == ["2015-01-02", "2020-04-20"]

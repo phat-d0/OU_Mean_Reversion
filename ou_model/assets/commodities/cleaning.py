@@ -62,3 +62,9 @@ def roll_gap_flags(prices: pd.DataFrame, roll_cfg: dict) -> list[dict]:
                  "log_return": round(float(row.log_return), 6), "zscore": round(float(row.zscore), 3)}
                 for d, row in gaps.iterrows()]
     return sorted(out, key=lambda r: (r["date"], r["leg"]))
+
+
+def flags_from(flags: list[dict], start: str | pd.Timestamp) -> list[dict]:
+    """Keep flags dated on or after ``start`` (drops warm-up dates that are not in the results)."""
+    start = pd.Timestamp(start)
+    return [f for f in flags if pd.Timestamp(f["date"]) >= start]

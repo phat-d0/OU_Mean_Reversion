@@ -14,18 +14,6 @@
     "flags": {
       "roll_gaps": [
         {
-          "date": "2014-11-28",
-          "leg": "BZ=F",
-          "log_return": -0.102863,
-          "zscore": 8.281
-        },
-        {
-          "date": "2014-11-28",
-          "leg": "CL=F",
-          "log_return": -0.107942,
-          "zscore": 7.466
-        },
-        {
           "date": "2018-11-13",
           "leg": "CL=F",
           "log_return": -0.073377,

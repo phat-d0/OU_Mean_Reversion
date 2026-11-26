@@ -25,6 +25,8 @@ def _synthetic(tickers, data_cfg, refresh=False):
     }, index=idx)
     df.loc["2020-04-20", "CL=F"] = -37.63
     df.loc["2018-03-01":, "RB=F"] *= 1.15  # injected roll jump
+    df.loc["2014-09-02":, "RB=F"] *= 1.15  # warm-up jump: detected but must not be reported
+    df.loc["2014-11-03", "CL=F"] = -1.0  # warm-up non-positive price: not reported
     return df[list(dict.fromkeys(tickers))]
 
 
@@ -40,5 +42,10 @@ def test_run_all_pairs_valid(tmp_path, monkeypatch):
     assert crack["data"]["flags"]["non_positive_prices"][0]["date"] == "2020-04-20"
     assert any(g["date"] == "2018-03-01" and g["leg"] == "RB=F"
                for g in crack["data"]["flags"]["roll_gaps"])
+    start = pd.Timestamp(crack["data"]["start"])
+    for c in ("crack_321", "brent_wti", "gold_silver_hedged"):
+        flags = json.loads((tmp_path / "commodities" / c / "summary.json").read_text())["data"]["flags"]
+        for key in ("roll_gaps", "non_positive_prices"):
+            assert all(pd.Timestamp(f["date"]) >= start for f in flags[key])
     sp = pd.read_parquet(tmp_path / "commodities" / "brent_wti" / "spread.parquet")
     assert np.isnan(sp.set_index("date").loc["2020-04-20", "spread"])
