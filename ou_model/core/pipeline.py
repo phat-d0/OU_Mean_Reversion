@@ -195,8 +195,9 @@ def evaluate_pair(
                  "n_obs": int(len(daily)), "flags": flags},
         "split": {"in_sample": [split.is_start, split.is_end],
                   "out_of_sample": [split.oos_start, split.oos_end or (idx.max() if len(idx) else None)]},
-        "hedge_ratio_in_sample": (eg.extra.get("hedge_ratio") if eg is not None and legs.shape[1] == 2
-                                  else None),
+        "hedge_ratio_in_sample": (eg.extra.get("hedge_ratio")
+                                  if construction == "hedged_spread" and eg is not None
+                                  and legs.shape[1] == 2 else None),
         "ou_params": {"in_sample": {m: p.to_dict() for m, p in ou_is.items()},
                       "out_of_sample_diagnostic": {"ols": fit_ou(spread_oos, dt, "ols",
                                                                  significance=sig).to_dict()}},

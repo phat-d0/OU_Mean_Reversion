@@ -167,3 +167,21 @@ def test_level_shift_fails_mean_reverting_verdict(cfg, tmp_path, seed):
     for block in ("in_sample", "out_of_sample"):
         assert summary["metrics"][block]["half_life_days"] is None
         assert summary["metrics"][block]["holding_to_half_life"] is None
+
+
+@pytest.mark.parametrize("construction", ["ratio", "fixed_weights"])
+def test_hedge_ratio_null_unless_hedged_spread(cfg, tmp_path, construction):
+    """Only hedged spreads use the Engle-Granger beta; other 2-leg constructions report null."""
+    px = synthetic_cointegrated_pair(2000, beta=1.0, kappa=12.0, sigma_spread=0.12, sigma_x=0.25,
+                                     dt=cfg["calendar"]["dt"], start="2015-01-01", x0=50.0, seed=3)
+    pc = pair_config(cfg, {"name": construction, "legs": ["Y", "X"],
+                           "construction": construction, "transform": "log"})
+    spread = np.log(px["Y"] / px["X"])
+    weights = pd.DataFrame({"Y": 1 / px["Y"], "X": -1 / px["X"]})
+    out = evaluate_pair(construction, "synthetic", px, spread, weights, pc, {},
+                        results_root=tmp_path)
+    assert validate_pair_results(out) == []
+    s = json.loads((out / "summary.json").read_text())
+    assert s["construction"] == construction
+    assert s["hedge_ratio_in_sample"] is None
+    assert s["tests"]["in_sample"]["engle_granger"]["extra"]["hedge_ratio"] is not None
