@@ -140,7 +140,7 @@
       "2026-11-25"
     ]
   },
-  "hedge_ratio_in_sample": 1.0546103649137668,
+  "hedge_ratio_in_sample": null,
   "ou_params": {
     "in_sample": {
       "ols": {
