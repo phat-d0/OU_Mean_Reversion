@@ -1,0 +1,15 @@
+# Dashboard presentation settings (UI agent). The UI reads results/ only.
+results_root: "results"
+asset_class_colors:
+  equities: "#2E6FDB"
+  commodities: "#D9822B"
+  fx: "#2BA87E"
+sample_colors:
+  in_sample: "#8A8F98"
+  out_of_sample: "#1F2430"
+simulator:
+  kappa: {min: 0.1, max: 50.0, default: 5.0}
+  mu: {min: -2.0, max: 2.0, default: 0.0}
+  sigma: {min: 0.01, max: 2.0, default: 0.3}
+  n_steps: 756
+  n_paths: 5

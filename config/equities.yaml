@@ -1,0 +1,24 @@
+# Equities agent config. Keys under `overrides` (global) or a pair's `overrides`
+# replace the matching keys in config/core.yaml for that pair only.
+asset_class: equities
+
+data:
+  source: "yfinance"
+  price_field: "Adj Close"        # adjusted closes (auto_adjust=False, then use Adj Close)
+  download_start: "2014-01-01"    # extra history so rolling windows are warm on 2015-01-01
+  download_end: null              # null = today
+  cache_dir: "data_cache/equities"
+  max_ffill_days: 0               # equities share one calendar: inner-join, no fill
+  min_price: 0.01
+
+overrides: {}
+
+# construction:
+#   hedged_spread : spread = T(y) - beta_t * T(x) - alpha_t, beta from rolling OLS (legs[0] = y)
+# transform: log | level   (T above)
+pairs:
+  - {name: ko_pep,  legs: ["KO", "PEP"],  construction: hedged_spread, transform: log}
+  - {name: xom_cvx, legs: ["XOM", "CVX"], construction: hedged_spread, transform: log}
+  - {name: hd_low,  legs: ["HD", "LOW"],  construction: hedged_spread, transform: log}
+  - {name: v_ma,    legs: ["V", "MA"],    construction: hedged_spread, transform: log}
+  - {name: xlf_kbe, legs: ["XLF", "KBE"], construction: hedged_spread, transform: log}

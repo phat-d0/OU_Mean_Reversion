@@ -1,0 +1,55 @@
+# Shared engine defaults. Asset-class YAMLs may override any key under
+# `signals`, `hedge`, `ou`, `backtest`, `stationarity` (globally or per pair).
+# Every numeric parameter used by ou_model/core lives here: no magic numbers in code.
+
+calendar:
+  trading_days_per_year: 252      # annualisation factor
+  dt: 0.003968253968253968        # 1 / 252, OU time step in years
+
+split:
+  in_sample_start: "2015-01-01"
+  in_sample_end: "2021-12-31"
+  out_of_sample_start: "2022-01-01"
+  out_of_sample_end: null         # null = latest available date
+
+ou:
+  methods: ["ols", "mle"]         # ols is primary; mle reported for comparison
+  primary_method: "ols"
+  min_obs: 60                     # fewer observations -> flagged, not fitted
+
+stationarity:
+  significance: 0.05
+  adf_regression: "c"             # constant, no trend
+  adf_autolag: "AIC"
+  eg_trend: "c"
+  johansen_det_order: 0           # constant term
+  johansen_k_ar_diff: 1
+
+hedge:
+  method: "rolling_ols"           # rolling_ols | static_ols | fixed | kalman (stretch)
+  window: 252                     # trailing obs for rolling OLS (uses data up to t inclusive)
+  min_periods: 126
+  add_constant: true
+
+signals:
+  zscore_method: "rolling"        # rolling mean/std of spread
+  zscore_window: 60
+  zscore_min_periods: 40
+  entry_z: 2.0                    # enter when |z| > entry_z
+  exit_z: 0.5                     # exit when |z| < exit_z
+  stop_z: 4.0                     # stop out when |z| > stop_z
+  reentry_requires_exit: true     # after a stop, wait for |z| < exit_z before re-entering
+
+backtest:
+  execution_lag: 1                # signal at close t is filled at close t+1
+  cost_bps_per_leg: 5.0           # base-case one-way cost per leg, bps of traded notional
+  cost_sensitivity_bps: [0.0, 5.0, 10.0]
+  notional: 1.0                   # gross notional per trade (capital base for returns)
+  sizing: "dollar_neutral"        # dollar_neutral | units
+  reestimation_window: 252        # trailing obs used to re-fit OU params
+  reestimation_freq: 21           # re-fit every N obs (walk-forward)
+  require_mean_reverting: true    # block new entries while trailing fit has b outside (0, 1)
+  max_holding_multiple: null      # optional time stop: exit after k * half-life days (null = off)
+
+results:
+  root: "results"

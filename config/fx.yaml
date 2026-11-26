@@ -1,0 +1,41 @@
+# FX agent config. FX (=X) series trade ~24/5 and include some days the futures
+# calendar does not (and vice versa). Align on common dates.
+asset_class: fx
+
+data:
+  source: "yfinance"
+  price_field: "Close"
+  download_start: "2014-01-01"
+  download_end: null
+  cache_dir: "data_cache/fx"
+  alignment: "inner"              # inner join on dates common to all legs
+  max_ffill_days: 1               # allow at most 1-day forward fill for holiday mismatches before the join
+  drop_weekends: true
+
+# Structural breaks are flagged in summary.json and drawn by the UI.
+structural_breaks:
+  - {date: "2015-01-15", label: "SNB removes EUR/CHF 1.20 floor", pairs: ["eurchf", "eurchf_post_snb"]}
+
+overrides: {}
+
+# construction:
+#   hedged_spread : T(y) - beta_t * T(x) - alpha_t (rolling OLS, legs[0] = y)
+#   single        : T(legs[0])  (one tradable series; ADF only, no Engle-Granger)
+pairs:
+  - name: aud_nzd
+    legs: ["AUDUSD=X", "NZDUSD=X"]
+    construction: hedged_spread
+    transform: log
+  - name: eurchf
+    legs: ["EURCHF=X"]
+    construction: single
+    transform: log
+  - name: eurchf_post_snb
+    legs: ["EURCHF=X"]
+    construction: single
+    transform: log
+    in_sample_start_override: "2015-02-01"   # estimation starts after the SNB break
+  - name: usdcad_crude
+    legs: ["CAD=X", "CL=F"]                    # CAD=X is USD/CAD
+    construction: hedged_spread
+    transform: log

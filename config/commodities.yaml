@@ -1,0 +1,53 @@
+# Commodities agent config. yfinance continuous front-month futures (=F) are
+# NOT back-adjusted: contract rolls create artificial price jumps. These are
+# flagged (see roll_gap) and documented, not silently removed.
+asset_class: commodities
+
+data:
+  source: "yfinance"
+  price_field: "Close"            # futures: no dividends, Close == Adj Close
+  download_start: "2014-01-01"
+  download_end: null
+  cache_dir: "data_cache/commodities"
+  max_ffill_days: 0
+  barrels_per_gallon_factor: 42.0 # RB=F and HO=F quote $/gallon -> x42 = $/barrel
+
+roll_gap:
+  detect: true
+  zscore_threshold: 5.0           # |daily log return| / rolling std above this -> flagged jump
+  window: 60
+  # Known data hazard: CL=F settled at -37.63 on 2020-04-20. Log transforms must
+  # mask non-positive prices; level spreads must flag the date.
+  non_positive_price_policy: "mask_and_flag"
+
+overrides: {}
+
+# construction:
+#   hedged_spread : T(y) - beta_t * T(x) - alpha_t (rolling OLS, legs[0] = y)
+#   fixed_weights : sum_i weights[i] * scale[i] * price_i   (Johansen also reported for 3+ legs)
+#   ratio         : T(legs[0] / legs[1])
+pairs:
+  - name: brent_wti
+    legs: ["BZ=F", "CL=F"]
+    construction: fixed_weights
+    transform: level
+    weights: [1.0, -1.0]
+    scale: [1.0, 1.0]
+  - name: brent_wti_hedged
+    legs: ["BZ=F", "CL=F"]
+    construction: hedged_spread
+    transform: level
+  - name: crack_321
+    legs: ["CL=F", "RB=F", "HO=F"]
+    construction: fixed_weights
+    transform: level
+    weights: [-3.0, 2.0, 1.0]     # long 2 RB + 1 HO, short 3 CL  ($/bbl, per 3 bbl)
+    scale: [1.0, 42.0, 42.0]
+  - name: gold_silver_ratio
+    legs: ["GC=F", "SI=F"]
+    construction: ratio
+    transform: log
+  - name: gold_silver_hedged
+    legs: ["GC=F", "SI=F"]
+    construction: hedged_spread
+    transform: log
