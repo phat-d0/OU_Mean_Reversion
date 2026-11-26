@@ -9,24 +9,25 @@
   "transform": "log",
   "data": {
     "start": "2015-01-01",
-    "end": "2026-11-26",
-    "n_obs": 3098,
+    "end": "2026-11-25",
+    "n_obs": 3097,
     "flags": {
       "roll_gaps": [],
       "structural_breaks": [],
       "non_positive_prices": [],
       "notes": [
-        "alignment: raw rows {'AUDUSD=X': 3359, 'NZDUSD=X': 3359}",
+        "incomplete bars (dated >= today UTC) dropped {'AUDUSD=X': 1, 'NZDUSD=X': 1}",
+        "alignment: raw rows {'AUDUSD=X': 3358, 'NZDUSD=X': 3358}",
         "alignment: NaN price rows dropped {'AUDUSD=X': 0, 'NZDUSD=X': 0}",
         "alignment: weekend rows dropped {'AUDUSD=X': 0, 'NZDUSD=X': 0}",
         "alignment: rows forward-filled (holiday mismatch) {'AUDUSD=X': 0, 'NZDUSD=X': 0}",
-        "alignment: union of dates 3359, rows dropped by inner join 0, final rows 3359"
+        "alignment: union of dates 3358, rows dropped by inner join 0, final rows 3358"
       ],
       "bad_ticks": [],
       "alignment": {
         "raw_rows": {
-          "AUDUSD=X": 3359,
-          "NZDUSD=X": 3359
+          "AUDUSD=X": 3358,
+          "NZDUSD=X": 3358
         },
         "nan_dropped": {
           "AUDUSD=X": 0,
@@ -40,9 +41,9 @@
           "AUDUSD=X": 0,
           "NZDUSD=X": 0
         },
-        "union_rows": 3359,
+        "union_rows": 3358,
         "join_dropped": 0,
-        "final_rows": 3359
+        "final_rows": 3358
       }
     }
   },
@@ -53,7 +54,7 @@
     ],
     "out_of_sample": [
       "2022-01-01",
-      "2026-11-26"
+      "2026-11-25"
     ]
   },
   "hedge_ratio_in_sample": 0.9406047585323817,
@@ -86,16 +87,16 @@
     },
     "out_of_sample_diagnostic": {
       "ols": {
-        "kappa": 2.2829916199253852,
-        "mu": 0.0057234639421409874,
-        "sigma": 0.05252351521909576,
-        "half_life": 0.30361354571358407,
-        "b": 0.9909814229841396,
-        "r2": 0.9808949910378373,
-        "n_obs": 1274,
+        "kappa": 2.2811438587937514,
+        "mu": 0.0057058475175520195,
+        "sigma": 0.05254393784028345,
+        "half_life": 0.3038594772915705,
+        "b": 0.9909886892685393,
+        "r2": 0.9808725844546907,
+        "n_obs": 1273,
         "mean_reverting": false,
         "method": "ols",
-        "unit_root_pvalue": 0.16409865758059305
+        "unit_root_pvalue": 0.1654117992140714
       }
     }
   },
@@ -164,14 +165,14 @@
     "out_of_sample_diagnostic": {
       "adf": {
         "name": "adf",
-        "statistic": -2.3247856484039016,
-        "pvalue": 0.1640986575805981,
+        "statistic": -2.3205946132740545,
+        "pvalue": 0.16541179921411053,
         "critical_values": {
-          "1%": -3.435497317510684,
-          "5%": -2.8638130956084464,
-          "10%": -2.5679802172809003
+          "1%": -3.4355013723543166,
+          "5%": -2.863814884719495,
+          "10%": -2.5679811700733755
         },
-        "n_obs": 1273,
+        "n_obs": 1272,
         "extra": {
           "used_lag": 0,
           "regression": "c"
@@ -200,19 +201,19 @@
       "n_obs": 1824
     },
     "out_of_sample": {
-      "ann_return": -0.006544890359142267,
-      "ann_vol": 0.015718350001809336,
-      "sharpe": -0.4163853304188344,
+      "ann_return": -0.006528694259607563,
+      "ann_vol": 0.015724485183512348,
+      "sharpe": -0.41519287807610505,
       "max_drawdown": -0.0485554780372533,
       "hit_rate": 0.6363636363636364,
       "n_trades": 22,
-      "avg_holding_days": 23.318181818181817,
+      "avg_holding_days": 23.272727272727273,
       "half_life_days": 35.6103966592218,
-      "holding_to_half_life": 0.6548138747604558,
-      "total_return": -0.03308805681566369,
-      "total_gross_return": -0.01107479683768131,
+      "holding_to_half_life": 0.6535374344587785,
+      "total_return": -0.03298026901777947,
+      "total_gross_return": -0.010967009039797094,
       "total_cost": 0.022013259977982372,
-      "n_obs": 1274
+      "n_obs": 1273
     }
   },
   "cost_sensitivity": {
@@ -233,19 +234,19 @@
         "n_obs": 1824
       },
       "out_of_sample": {
-        "ann_return": -0.002190619154706193,
-        "ann_vol": 0.015707293111849062,
-        "sharpe": -0.13946509682522334,
+        "ann_return": -0.002171002575042316,
+        "ann_vol": 0.015713404197229316,
+        "sharpe": -0.13816245975681835,
         "max_drawdown": -0.04548153656725719,
         "hit_rate": 0.6818181818181818,
         "n_trades": 22,
-        "avg_holding_days": 23.318181818181817,
+        "avg_holding_days": 23.272727272727273,
         "half_life_days": 35.6103966592218,
-        "holding_to_half_life": 0.6548138747604558,
-        "total_return": -0.01107479683768131,
-        "total_gross_return": -0.01107479683768131,
+        "holding_to_half_life": 0.6535374344587785,
+        "total_return": -0.010967009039797094,
+        "total_gross_return": -0.010967009039797094,
         "total_cost": 0.0,
-        "n_obs": 1274
+        "n_obs": 1273
       }
     },
     "5.0": {
@@ -265,19 +266,19 @@
         "n_obs": 1824
       },
       "out_of_sample": {
-        "ann_return": -0.006544890359142267,
-        "ann_vol": 0.015718350001809336,
-        "sharpe": -0.4163853304188344,
+        "ann_return": -0.006528694259607563,
+        "ann_vol": 0.015724485183512348,
+        "sharpe": -0.41519287807610505,
         "max_drawdown": -0.0485554780372533,
         "hit_rate": 0.6363636363636364,
         "n_trades": 22,
-        "avg_holding_days": 23.318181818181817,
+        "avg_holding_days": 23.272727272727273,
         "half_life_days": 35.6103966592218,
-        "holding_to_half_life": 0.6548138747604558,
-        "total_return": -0.03308805681566369,
-        "total_gross_return": -0.01107479683768131,
+        "holding_to_half_life": 0.6535374344587785,
+        "total_return": -0.03298026901777947,
+        "total_gross_return": -0.010967009039797094,
         "total_cost": 0.022013259977982372,
-        "n_obs": 1274
+        "n_obs": 1273
       }
     },
     "10.0": {
@@ -297,19 +298,19 @@
         "n_obs": 1824
       },
       "out_of_sample": {
-        "ann_return": -0.010899161563578343,
-        "ann_vol": 0.015862725052211046,
-        "sharpe": -0.687092635578346,
+        "ann_return": -0.010886385944172808,
+        "ann_vol": 0.01586893315576452,
+        "sharpe": -0.6860187661839282,
         "max_drawdown": -0.060594550310872436,
         "hit_rate": 0.5909090909090909,
         "n_trades": 22,
-        "avg_holding_days": 23.318181818181817,
+        "avg_holding_days": 23.272727272727273,
         "half_life_days": 35.6103966592218,
-        "holding_to_half_life": 0.6548138747604558,
-        "total_return": -0.05510131679364606,
-        "total_gross_return": -0.01107479683768131,
+        "holding_to_half_life": 0.6535374344587785,
+        "total_return": -0.05499352899576185,
+        "total_gross_return": -0.010967009039797094,
         "total_cost": 0.044026519955964745,
-        "n_obs": 1274
+        "n_obs": 1273
       }
     }
   },

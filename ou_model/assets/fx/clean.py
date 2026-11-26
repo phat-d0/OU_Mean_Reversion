@@ -35,6 +35,20 @@ class AlignmentStats:
         return lines
 
 
+def utc_today() -> pd.Timestamp:
+    """Today's date in UTC (tz-naive, midnight)."""
+    return pd.Timestamp.now(tz="UTC").normalize().tz_localize(None)
+
+
+def drop_incomplete_last_bar(s: pd.Series, today: pd.Timestamp | str | None = None
+                             ) -> tuple[pd.Series, int]:
+    """Drop rows dated on or after ``today`` (UTC by default): yfinance returns the live,
+    unsettled bar for the current session. Returns the series and the number of rows removed."""
+    cutoff = utc_today() if today is None else pd.Timestamp(today).normalize()
+    keep = s.index < cutoff
+    return s[keep], int((~keep).sum())
+
+
 def drop_weekends(s: pd.Series) -> tuple[pd.Series, int]:
     """Remove Saturday/Sunday stamps; return the series and the number of rows removed."""
     keep = s.index.day_of_week < 5

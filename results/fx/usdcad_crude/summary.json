@@ -9,8 +9,8 @@
   "transform": "log",
   "data": {
     "start": "2015-01-01",
-    "end": "2026-11-26",
-    "n_obs": 3102,
+    "end": "2026-11-25",
+    "n_obs": 3101,
     "flags": {
       "roll_gaps": [],
       "structural_breaks": [],
@@ -22,11 +22,12 @@
         }
       ],
       "notes": [
-        "alignment: raw rows {'CAD=X': 3359, 'CL=F': 3246}",
+        "incomplete bars (dated >= today UTC) dropped {'CAD=X': 1, 'CL=F': 1}",
+        "alignment: raw rows {'CAD=X': 3358, 'CL=F': 3245}",
         "alignment: NaN price rows dropped {'CAD=X': 0, 'CL=F': 0}",
         "alignment: weekend rows dropped {'CAD=X': 0, 'CL=F': 0}",
         "alignment: rows forward-filled (holiday mismatch) {'CAD=X': 4, 'CL=F': 116}",
-        "alignment: union of dates 3363, rows dropped by inner join 1, final rows 3362",
+        "alignment: union of dates 3362, rows dropped by inner join 1, final rows 3361",
         "non-positive price masked to NaN: CL=F -37.630001068115234 on 2020-04-20",
         "large one-day move (|log r| > 0.1): CL=F -0.1079 on 2014-11-28",
         "large one-day move (|log r| > 0.1): CL=F +0.1064 on 2016-01-21",
@@ -222,8 +223,8 @@
       ],
       "alignment": {
         "raw_rows": {
-          "CAD=X": 3359,
-          "CL=F": 3246
+          "CAD=X": 3358,
+          "CL=F": 3245
         },
         "nan_dropped": {
           "CAD=X": 0,
@@ -237,9 +238,9 @@
           "CAD=X": 4,
           "CL=F": 116
         },
-        "union_rows": 3363,
+        "union_rows": 3362,
         "join_dropped": 1,
-        "final_rows": 3362
+        "final_rows": 3361
       }
     }
   },
@@ -250,7 +251,7 @@
     ],
     "out_of_sample": [
       "2022-01-01",
-      "2026-11-26"
+      "2026-11-25"
     ]
   },
   "hedge_ratio_in_sample": -0.08401487976043853,
@@ -283,16 +284,16 @@
     },
     "out_of_sample_diagnostic": {
       "ols": {
-        "kappa": 6.251203005224186,
-        "mu": 0.007883251207703298,
-        "sigma": 0.06533897863537783,
-        "half_life": 0.11088220618986074,
-        "b": 0.9754987882220971,
-        "r2": 0.9511464599160359,
-        "n_obs": 1275,
+        "kappa": 6.216017346027503,
+        "mu": 0.007984470812728005,
+        "sigma": 0.06534534621055176,
+        "half_life": 0.1115098530094865,
+        "b": 0.9756350023659289,
+        "r2": 0.9511415664430172,
+        "n_obs": 1274,
         "mean_reverting": true,
         "method": "ols",
-        "unit_root_pvalue": 0.0016802519263126754
+        "unit_root_pvalue": 0.0018361733677178021
       }
     }
   },
@@ -361,14 +362,14 @@
     "out_of_sample_diagnostic": {
       "adf": {
         "name": "adf",
-        "statistic": -3.8185946885323623,
-        "pvalue": 0.00272269501517521,
+        "statistic": -3.789978291772195,
+        "pvalue": 0.003011530670780373,
         "critical_values": {
-          "1%": -3.435509501237317,
-          "5%": -2.86381847140403,
-          "10%": -2.5679830801661603
+          "1%": -3.4355135753070005,
+          "5%": -2.8638202689908683,
+          "10%": -2.567984037473585
         },
-        "n_obs": 1270,
+        "n_obs": 1269,
         "extra": {
           "used_lag": 4,
           "regression": "c"
@@ -397,9 +398,9 @@
       "n_obs": 1827
     },
     "out_of_sample": {
-      "ann_return": 0.029975209741519664,
-      "ann_vol": 0.08570772798552403,
-      "sharpe": 0.3497375376300076,
+      "ann_return": 0.02999873816360877,
+      "ann_vol": 0.0857413687103562,
+      "sharpe": 0.3498747292563968,
       "max_drawdown": -0.09938759142563294,
       "hit_rate": 0.68,
       "n_trades": 25,
@@ -409,7 +410,7 @@
       "total_return": 0.15166028738268877,
       "total_gross_return": 0.17714562880229617,
       "total_cost": 0.025485341419607378,
-      "n_obs": 1275
+      "n_obs": 1274
     }
   },
   "cost_sensitivity": {
@@ -430,9 +431,9 @@
         "n_obs": 1827
       },
       "out_of_sample": {
-        "ann_return": 0.03501231251621854,
-        "ann_vol": 0.08565707313068417,
-        "sharpe": 0.4087498117382718,
+        "ann_return": 0.0350397947081465,
+        "ann_vol": 0.08569068799509522,
+        "sharpe": 0.40891018065057566,
         "max_drawdown": -0.09690011699180918,
         "hit_rate": 0.68,
         "n_trades": 25,
@@ -442,7 +443,7 @@
         "total_return": 0.17714562880229617,
         "total_gross_return": 0.17714562880229617,
         "total_cost": 0.0,
-        "n_obs": 1275
+        "n_obs": 1274
       }
     },
     "5.0": {
@@ -462,9 +463,9 @@
         "n_obs": 1827
       },
       "out_of_sample": {
-        "ann_return": 0.029975209741519664,
-        "ann_vol": 0.08570772798552403,
-        "sharpe": 0.3497375376300076,
+        "ann_return": 0.02999873816360877,
+        "ann_vol": 0.0857413687103562,
+        "sharpe": 0.3498747292563968,
         "max_drawdown": -0.09938759142563294,
         "hit_rate": 0.68,
         "n_trades": 25,
@@ -474,7 +475,7 @@
         "total_return": 0.15166028738268877,
         "total_gross_return": 0.17714562880229617,
         "total_cost": 0.025485341419607378,
-        "n_obs": 1275
+        "n_obs": 1274
       }
     },
     "10.0": {
@@ -494,9 +495,9 @@
         "n_obs": 1827
       },
       "out_of_sample": {
-        "ann_return": 0.02493810696682078,
-        "ann_vol": 0.08578655754483976,
-        "sharpe": 0.29069947181160505,
+        "ann_return": 0.024957681619071036,
+        "ann_vol": 0.08582023426821814,
+        "sharpe": 0.2908134874238351,
         "max_drawdown": -0.10191439081386237,
         "hit_rate": 0.6,
         "n_trades": 25,
@@ -506,7 +507,7 @@
         "total_return": 0.12617494596308135,
         "total_gross_return": 0.17714562880229617,
         "total_cost": 0.050970682839214757,
-        "n_obs": 1275
+        "n_obs": 1274
       }
     }
   },

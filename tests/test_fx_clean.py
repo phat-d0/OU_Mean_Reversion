@@ -81,3 +81,12 @@ def test_bad_ticks_flags_spike_without_dropping() -> None:
     assert [t["date"] for t in ticks] == [days[2].strftime("%Y-%m-%d"), days[3].strftime("%Y-%m-%d")]
     assert ticks[0]["reverses_next_day"] is True
     assert bad_ticks(legs, 1.0) == []
+
+
+def test_drop_incomplete_last_bar_with_injected_today() -> None:
+    from ou_model.assets.fx.clean import drop_incomplete_last_bar
+    s = pd.Series(1.0, index=pd.bdate_range("2026-11-23", periods=5))  # Mon 23 .. Fri 27
+    out, n = drop_incomplete_last_bar(s, today="2026-11-26")
+    assert n == 2 and out.index.max() == pd.Timestamp("2026-11-25")
+    out, n = drop_incomplete_last_bar(s, today=pd.Timestamp("2026-12-01"))
+    assert n == 0 and len(out) == 5
