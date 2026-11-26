@@ -30,6 +30,11 @@ hedge:
   window: 252                     # trailing obs for rolling OLS (uses data up to t inclusive)
   min_periods: 126
   add_constant: true
+  # Kalman filter (used only when method: kalman). State (alpha, beta) is a random walk
+  # with covariance delta/(1-delta)*I; obs_var = observation noise; init_var = prior variance.
+  kalman_delta: 0.0001
+  kalman_obs_var: 0.001
+  kalman_init_var: 1.0
 
 signals:
   zscore_method: "rolling"        # rolling mean/std of spread
