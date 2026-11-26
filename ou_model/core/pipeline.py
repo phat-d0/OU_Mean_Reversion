@@ -99,6 +99,14 @@ def _cointegrated(tests: dict, n_legs: int, significance: float) -> bool:
     return bool(getattr(tests["johansen"], "rank", 0) >= 1)
 
 
+def _mean_reverting(primary: OUParams, adf: object, significance: float) -> bool:
+    """Verdict: the primary OU fit is mean-reverting (b in (0, 1), lag-0 DF p < significance)
+    AND the AIC-lag ADF on the in-sample spread rejects a unit root at ``significance``."""
+    p = getattr(adf, "pvalue", None)
+    adf_ok = p is not None and math.isfinite(p) and p < significance
+    return bool(primary.mean_reverting and adf_ok)
+
+
 def _split_metrics(res: BacktestResult, split: Split, hl_days: float | None, tdpy: int) -> dict:
     """Metrics on IS and OOS dates (trades assigned by entry date)."""
     daily, trades = res.daily, res.trades
@@ -162,7 +170,8 @@ def evaluate_pair(
     tests_is = _tests_in_sample(test_legs, spread_is, cfg)
     ou_is = _ou_block(spread_is, cfg, flags["notes"])
     primary = ou_is[get(cfg, "ou.primary_method")]
-    hl_days = primary.half_life * tdpy if primary.mean_reverting else None
+    mean_reverting = _mean_reverting(primary, tests_is["adf"], sig)
+    hl_days = primary.half_life * tdpy if mean_reverting else None
 
     bcfg = BacktestConfig.from_config(cfg)
     costs = [bcfg.cost_bps_per_leg] + [float(c) for c in get(cfg, "backtest.cost_sensitivity_bps")]
@@ -196,7 +205,7 @@ def evaluate_pair(
                       spread_oos, cfg["stationarity"]["adf_regression"],
                       cfg["stationarity"]["adf_autolag"])}},
         "verdict": {"cointegrated_in_sample": _cointegrated(tests_is, legs.shape[1], sig),
-                    "mean_reverting_in_sample": bool(primary.mean_reverting)},
+                    "mean_reverting_in_sample": mean_reverting},
         "metrics": _split_metrics(base, split, hl_days, tdpy),
         "cost_sensitivity": {str(float(c)): _split_metrics(runs[c], split, hl_days, tdpy)
                              for c in get(cfg, "backtest.cost_sensitivity_bps")},

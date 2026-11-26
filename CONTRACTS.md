@@ -101,6 +101,7 @@ Names below are fixed; the Quant agent may add optional keyword arguments.
   splits metrics IS/OOS by date, and writes section 2 via `core/results.py`. `meta` carries data flags
   (`{"flags": {"roll_gaps", "structural_breaks", "non_positive_prices", "notes"}}`, optional `construction`, `transform`;
   defaults come from `cfg["pair"]`). `hedge_history` (`beta` column) fills `hedge_ratio`. Rows before `in_sample_start` are warm-up and not written.
+  Verdict `mean_reverting_in_sample`: primary OU fit mean-reverting (b ∈ (0, 1) and lag-0 DF p < significance) **and** in-sample ADF (`adf_autolag`) p < significance; when False, `half_life_days` is null in metrics.
   Verdict `cointegrated_in_sample`: ADF on the spread (1 leg), Engle-Granger (2 legs), Johansen rank ≥ 1 (3+ legs), at `stationarity.significance`.
 - `core/results.py`: `write_pair_results(out_dir, spread_df, trades_df, summary) -> Path` and `validate_pair_results(path) -> list[str]` (empty list = valid).
 - `core/synthetic.py`: `synthetic_cointegrated_pair(...)` for tests/demos.

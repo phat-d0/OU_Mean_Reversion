@@ -139,3 +139,31 @@ def test_write_empty_trades(tmp_path):
     out = write_pair_results(tmp_path / "x", sp, pd.DataFrame(), {"a": float("nan")})
     assert json.loads((out / "summary.json").read_text()) == {"a": None}
     assert len(pd.read_parquet(out / "trades.parquet")) == 0
+
+
+@pytest.mark.parametrize("seed", [0, 2, 5])
+def test_level_shift_fails_mean_reverting_verdict(cfg, tmp_path, seed):
+    """A single large level shift with slow partial recovery (plus a small random walk and
+    iid noise): the lag-0 Dickey-Fuller in fit_ou rejects a unit root, the AIC-lag ADF does
+    not, so the verdict must be False while ou_params keep the fitted values."""
+    n = 2000
+    rng = np.random.default_rng(seed)
+    t = np.arange(n)
+    shift = np.where(t >= 300, -0.15 + 0.075 * (1 - np.exp(-(t - 300) / 400.0)), 0.0)
+    s = shift + rng.normal(0, 0.002, n).cumsum() + rng.normal(0, 0.01, n)
+    idx = pd.bdate_range("2015-01-01", periods=n)
+    legs = pd.DataFrame({"S": np.exp(s)}, index=idx)
+    pc = pair_config(cfg, {"name": "shift", "legs": ["S"], "construction": "single",
+                           "transform": "log"})
+    out = evaluate_pair("shift", "synthetic", legs, np.log(legs["S"]),
+                        pd.DataFrame({"S": 1.0}, index=idx), pc, {}, results_root=tmp_path)
+    assert validate_pair_results(out) == []
+    summary = json.loads((out / "summary.json").read_text())
+    sig = cfg["stationarity"]["significance"]
+    ols = summary["ou_params"]["in_sample"]["ols"]
+    assert ols["mean_reverting"] is True and ols["unit_root_pvalue"] < sig   # lag-0 DF rejects
+    assert summary["tests"]["in_sample"]["adf"]["pvalue"] >= sig             # ADF(AIC) does not
+    assert summary["verdict"]["mean_reverting_in_sample"] is False
+    for block in ("in_sample", "out_of_sample"):
+        assert summary["metrics"][block]["half_life_days"] is None
+        assert summary["metrics"][block]["holding_to_half_life"] is None
