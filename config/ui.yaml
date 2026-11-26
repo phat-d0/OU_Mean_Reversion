@@ -13,3 +13,39 @@ simulator:
   sigma: {min: 0.01, max: 2.0, default: 0.3}
   n_steps: 756
   n_paths: 5
+# --- added by UI agent (Phase 4) ---
+trading_days_per_year: 252          # half-life years -> days in the simulator
+simulator_dt: 0.003968253968253968  # 1/252, simulator time step in years
+missing_value: "—"                  # how null / NaN values are rendered
+number_format:
+  default: "{:.4f}"
+  pct: "{:.2%}"
+  int: "{:,.0f}"
+  pvalue: "{:.4f}"
+chart:
+  height: 380
+  simulator_height: 460
+  line_width: 1.2
+  band_opacity: 0.12
+  band_color: "#2E6FDB"
+  mean_color: "#E0A100"
+  spread_color: "#1F2430"
+  zscore_color: "#1F2430"
+  threshold_colors:
+    entry: "#C0392B"
+    exit: "#27AE60"
+    stop: "#7D3C98"
+  marker_size: 8
+  event_markers:
+    entry: {symbol: "triangle-up", color: "#C0392B"}
+    exit: {symbol: "circle", color: "#27AE60"}
+    stop: {symbol: "x", color: "#7D3C98"}
+    time: {symbol: "diamond", color: "#E67E22"}
+  boundary_color: "#555555"
+  structural_break_color: "#D62728"
+  roll_gap_color: "#D9822B"
+  roll_gap_opacity: 0.35
+  roll_gap_width: 0.8
+  non_positive_color: "#8E44AD"
+  cross_asset_height_per_pair: 34
+  cross_asset_min_height: 360
