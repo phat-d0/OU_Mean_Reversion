@@ -127,3 +127,12 @@ def test_run_end_to_end_synthetic(cfg_dir: Path, tmp_path: Path) -> None:
     assert npp and npp[0]["date"] == "2020-04-20" and npp[0]["leg"] == "CL=F"
     assert by["usdcad_crude"]["data"]["flags"]["alignment"]["ffilled"]["CL=F"] > 0
     assert by["aud_nzd"]["verdict"]["cointegrated_in_sample"] is True
+
+
+def test_run_drops_bars_on_or_after_injected_today(cfg_dir: Path, tmp_path: Path) -> None:
+    import json
+    paths = fx.run(cfg_dir, tmp_path / "results", fetch=_synthetic_fetch(), today="2023-06-15")
+    for p in paths:
+        s = json.loads((p / "summary.json").read_text())
+        assert s["data"]["end"] < "2023-06-15"
+        assert s["data"]["flags"]["notes"][0].startswith("incomplete bars")
